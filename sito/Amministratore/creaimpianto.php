@@ -157,7 +157,7 @@ require '../php/db.php'; ?>
                 <input type="text" class="form-control" id="nomecliente">
             </div> 
             <div class=" text-center">
-            <a href="creasensore.html"><button type="button" class="btn btn-success" >Nuovo sensore</button></a>
+            <a href="creasensore.php"><button type="button" class="btn btn-success" >Nuovo sensore</button></a>
             </div>
             
         </div>

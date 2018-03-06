@@ -162,8 +162,10 @@ require '../php/db.php'; ?>
                   <td>1</td>
                   <td>Impiantistica Andria</td>
                   <td>00001</td>
-                  <th><button type="button">Modifica</button>
-                    <button type="button">Elimina</button></th>
+                  
+                    <td><a href="modificaimpianto.php"><button type="button">Modifica</button></a>
+                      
+                    <button type="button">Elimina</button></td>
                 </tr>
                 <tr>
                   <td>2</td>
