@@ -33,7 +33,7 @@ require 'php/db.php'; ?>
                             <input  class="form-control" name="inputuser" id="exampleInputEmail1" type="user" aria-describedby="emailHelp" placeholder="Inserisci Username">
                         </div>
                         <br>
-                        <a name="btnrecuperapassword" class="btn btn-primary btn-block" href="login.php">Recupera Password</a>
+                        <a name="btnrecuperapassword" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary btn-block" href="login.php">Recupera Password</a>
                     </form>
                     <br><br>
                     <div class="text-center">
@@ -67,6 +67,24 @@ require 'php/db.php'; ?>
                 </div>
             </div>
         </div>
+        <!-- Revovery modal-->
+    <div class="modal" fade id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ti abbiamo inviato un nuovo username</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">x</span>
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            
+                           <a class="btn btn-primary" href="login.php">Ok</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
