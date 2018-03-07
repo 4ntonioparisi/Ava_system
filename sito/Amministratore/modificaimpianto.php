@@ -111,7 +111,7 @@ require '../php/db.php'; ?>
                             </table>
                             <div class=" text-center">
                                 <a href="creasensore.php"> <button type="button" class="btn btn-success" >Aggiungi sensore</button></a>
-                                <a href="dashboard.php"> <button type="button" class="btn btn-success"> Elimina impianto</button></a>
+                                <a data-toggle="modal" data-target="#exampleModal" href="dashboard.php"> <button type="button" class="btn btn-success"> Elimina impianto</button></a>
                             </div>
 
                         </div>
@@ -145,6 +145,26 @@ require '../php/db.php'; ?>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
                             <a class="btn btn-primary" href="dashboard.php">Elimina</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- elimina impianto Modal -->
+            <div>
+                <div class="modal" fade id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Eliminare Impianto?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">x</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">Seleziona elimina per eliminare</div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
+                                <a class="btn btn-primary" href="dashboard.php">Elimina</a>
+                            </div>
                         </div>
                     </div>
                 </div>

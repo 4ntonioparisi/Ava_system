@@ -72,7 +72,7 @@ require 'php/db.php'; ?>
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ti abbiamo inviato un nuovo username</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Ti abbiamo inviato una nuova password</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">x</span>
                             </button>

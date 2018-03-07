@@ -2,7 +2,7 @@
 require 'php/db.php'; ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
   <meta charset="utf-8">
@@ -10,11 +10,13 @@ require 'php/db.php'; ?>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>System_ava</title>
+  <title>System_Ava</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
@@ -22,16 +24,35 @@ require 'php/db.php'; ?>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Terza Parte</a>
+    <a class="navbar-brand" href="index.html">Cliente</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-    
-     
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="dashboard.html">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Informazioni</span>
+          </a>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="creaimpianto.html">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Aggiungi Terza Parte</span>
+          </a>
+        </li>
+        </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
       <ul class="navbar-nav ml-auto">
         
-       
+   
+   
       
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
@@ -42,26 +63,44 @@ require 'php/db.php'; ?>
   </nav>
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
-        </li>
-       
-      </ol>
-      <!-- Area Chart Example-->
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> Nome impianto</div>
-        <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
-        </div>
+      
         
-      <div class="row">
-        <div class="col-lg-8">
-          
-         
-   
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header"> 
+            <table  id="menu-item-432618" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home selected menu-item-432618">
+                    <th>Aggiungi terza parte</th>
+            </table>
+          </div>
+        <div class="card-body">
+          <div class="form-group">
+            <div class="form-group">
+                <label for="tiposensore">Nome:</label>
+                <input type="text" class="form-control" id="tiposensore">
+            </div> 
+            <div class="form-group">
+                <label for="marcasensore">Cognome:</label>
+                <input type="text" class="form-control" id="marcasensore">
+            </div>
+              
+            <div class=" text-center">
+            <button type="button" class="btn btn-success" >Annulla</button>
+            <button type="button" class="btn btn-success" >
+                <a hrefe="dashboard.html">Aggiungi</a></button>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2018</small>
+        </div>
+      </div>
+    </footer>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
@@ -90,11 +129,12 @@ require 'php/db.php'; ?>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
-    <script src="js/sb-admin-charts.min.js"></script>
+    <script src="js/sb-admin-datatables.min.js"></script>
   </div>
 </body>
 
