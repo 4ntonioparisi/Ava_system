@@ -28,15 +28,6 @@ require 'php/db.php'; ?>
                 <div class="card-body">
                     <form method="post">
                         <div class="form-group">
-                            <label for="sel1">Accedi come:</label>
-                            <select name="sltipoaccount" class="form-control" id="sel1">
-                                <option value="amministratore">Amministratore</option>
-                                <option value="cliente">Cliente</option>
-                                <option value="persona">Persona</option>
-
-                            </select>
-                        </div> 
-                        <div class="form-group">
                             <label for="exampleInputUser">Inserisci Username</label>
                             <input class="form-control" name="inputuser" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Inserisci Username">
                         </div>
@@ -46,6 +37,8 @@ require 'php/db.php'; ?>
                                    placeholder="Inserisci Password">
                         </div>
                         <input name="btnlogin" type="submit" class="btn btn-primary btn-block" value="Login">
+                        <a href="Cliente/registrazionecliente.php" name="btnlogin" type="submit" class="btn btn-primary btn-block" value="Registrati" >Registrati</a>
+                       
                        
                     </form>
                     <div class="text-center">

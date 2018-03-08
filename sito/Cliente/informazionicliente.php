@@ -1,7 +1,6 @@
 <?php
  require '../php/db.php'; ?>
 
-
 <!DOCTYPE html>
 <html lang="it">
 
@@ -11,11 +10,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>System_ava</title>
+  <title>System_Ava</title>
   <!-- Bootstrap core CSS-->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin.css" rel="stylesheet">
 </head>
@@ -30,15 +31,13 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text"><a href="informazionicliente.php">Informazioni</a></span>
+          <a class="nav-link" href="../dashboardcliente.php">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Informazioni</span>
           </a>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
         </li>
-        <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-          
-          </ul>
-         </ul>
+        </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
           <a class="nav-link text-center" id="sidenavToggler">
@@ -46,58 +45,82 @@
           </a>
         </li>
       </ul>
-        
       <ul class="navbar-nav ml-auto">
+        
+   
+   
+      
         <li class="nav-item">
-          <a class="nav-link" href="../login.php">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
       </ul>
     </div>
   </nav>
-    
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"> Dashboard</li>
-       
-      </ol>
-      </div>
       
         
-      <!-- Area Chart Example-->
+      <!-- Example DataTables Card-->
       <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> Nome impianto</div>
+        <div class="card-header"> 
+            <table  id="menu-item-432618" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home selected menu-item-432618">
+                    <th>Informazioni personali</th>
+            </table>
+          </div>
         <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
+          <div class="form-group">
+            <div class="form-group">
+                <label for="tiposensore">Nome:</label>
+                <input type="text" class="form-control" id="tiposensore">
+            </div> 
+            <div class="form-group">
+                <label for="marcasensore">Città:</label>
+                <input type="text" class="form-control" id="marcasensore">
+            </div>
+              <div class="form-group">
+                <label for="marcasensore">User:</label>
+                <input type="text" class="form-control" id="marcasensore">
+            </div> 
+             <div class="form-group">
+                <label for="marcasensore">Password:</label>
+                <input type="text" class="form-control" id="marcasensore">
+            </div>
+            <div class=" text-center">
+            <button type="button" class="btn btn-success" >Annulla</button>
+            <button type="button" class="btn btn-success" >
+                <a hrefe="dashboard.html">Modifica</a></button>
+            </div>
+            
         </div>
-        
-      <div class="row">
-        <div class="col-lg-8">
-          
-         
-   
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Powerade by AVA_Group 2018</small>
+        </div>
+      </div>
+    </footer>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="../vendor/chart.js/Chart.min.js"></script>
+    <script src="../vendor/datatables/jquery.dataTables.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
-    <script src="../js/sb-admin-charts.min.js"></script>
+    <script src="../js/sb-admin-datatables.min.js"></script>
   </div>
-</div>
-        </div>
 </body>
 
 </html>
