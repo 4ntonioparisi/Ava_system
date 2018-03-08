@@ -1,5 +1,15 @@
 <?php
-require '../php/db.php'; ?>
+require '../php/db.php'; 
+$db='';
+$sql='';
+$db=getDb();
+$id=$_POST['txtid'];
+echo $id;
+$query="SELECT sensore.Id, sensore.Tipo, sensore.Marca, sensore.Stato from sensore where sensore.ImpiantoId=:Id ; ";
+$sql=$db->prepare($query);
+$sql->bindParam(':Id',$id);
+$sql->execute();
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -70,15 +80,6 @@ require '../php/db.php'; ?>
                             <th>Modifica impianto</th>
                         </table>
                     </div>
-
-
-
-                    <?php
-
-
-                    ?>
-
-
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -93,20 +94,34 @@ require '../php/db.php'; ?>
                                 </thead>
                                 <tbody>
 
-
-
+                                    <?php
+                                    $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
+                                    foreach($rows as $row)
+                                    {
+                                    ?>
                                     <tr>
-                                        <td>001</td>
-                                        <td>Temperatura</td>
-                                        <td>Xiaomi</td>
-                                        <td> 0  (da mettere il pallino dello stato)</td>
+
+                                        <td><?php echo $row['Id'];?></td>
+                                        <td><?php echo $row['Tipo']; ?></td>
+                                        <td><?php echo $row['Marca'];  ?></td>
+                                        <td>
+                                            <?php 
+                                            if($row['Stato']==='0'){
+                                               ?> 
+                                            <i class="fal fa-circle" style="color:Red"></i>
+                                          <?php  }
+                                        else
+                                    { ?>
+                                             <i class="fal fa-circle" style="color:Green"></i>
+                                       <?php } ?>
+                                           
+                                        </td>  
                                         <td> 
                                             <a data-toggle="modal" data-target="#exampleModal"><button type="button"><i class="far fa-trash" ></i></button></a> </td>
                                     </tr>
-
-
-
-
+                                    <?php
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                             <div class=" text-center">
