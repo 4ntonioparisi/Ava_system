@@ -37,7 +37,7 @@ require 'php/db.php'; ?>
                                    placeholder="Inserisci Password">
                         </div>
                         <input name="btnlogin" type="submit" class="btn btn-primary btn-block" value="Login">
-                        <a href="Cliente/registrazionecliente.php" name="btnlogin" type="submit" class="btn btn-primary btn-block" value="Registrati" >Registrati</a>
+                        <a href="register.php" name="btnlogin" type="submit" class="btn btn-primary btn-block" value="Registrati" >Registrati</a>
                        
                        
                     </form>

@@ -38,17 +38,17 @@ require '../php/db.php'; ?>
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <label for="exampleInputName">Nome</label>
-                                    <input name="btnname" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Inserisci il nome">
+                                    <input name="btnname" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Inserisci nome/azienda">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="exampleInputLastName">Cognome</label>
-                                    <input name="btncognome" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Inserisci il cognome">
+                                    <label for="exampleInputLastName">Città</label>
+                                    <input name="btncognome" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Inserisci città">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="exampleInputEmail1">Username</label>
+                            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Inserisci Username">
                         </div>
                         <div class="form-group">
                             <div class="form-row">
@@ -58,15 +58,15 @@ require '../php/db.php'; ?>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="exampleConfirmPassword">Confirm password</label>
-                                    <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
+                                    <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Conferma password">
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary btn-block" href="login.html">Register</a>
+                        <a class="btn btn-primary btn-block" href="login.php">Registrati</a>
                     </form>
                     <div class="text-center">
-                        <a class="d-block small mt-3" href="login.html">Login Page</a>
-                        <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                        <a class="d-block small mt-3" href="login.php">Pagina di login</a>
+                        
                     </div>
                 </div>
             </div>
