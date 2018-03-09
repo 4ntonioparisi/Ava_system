@@ -26,18 +26,7 @@ require 'php/db.php'; ?>
             <div class="card card-login mx-auto mt-5">
                 <div class="card-header">Login</div>
                 <div class="card-body">
-
                     <form method="post">
-                        <div class="form-group">
-                            <label for="sel1">Accedi come:</label>
-                            <select name="sltipoaccount" class="form-control" id="sel1">
-                                <option value="cliente">Amministratore</option>
-                                <option value="cliente">Cliente</option>
-                                <option value="persona">Persona</option>
-
-                            </select>
-                        </div> 
-
                         <div class="form-group">
                             <label for="exampleInputUser">Inserisci Username</label>
                             <input class="form-control" name="inputuser" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Inserisci Username">
@@ -48,11 +37,10 @@ require 'php/db.php'; ?>
                                    placeholder="Inserisci Password">
                         </div>
                         <input name="btnlogin" type="submit" class="btn btn-primary btn-block" value="Login">
-
-
-
+                        <a href="register.php" name="btnlogin" type="submit" class="btn btn-primary btn-block" value="Registrati" >Registrati</a>
+                       
+                       
                     </form>
-
                     <div class="text-center">
                         <br><br>
                         <?php
@@ -70,10 +58,10 @@ require 'php/db.php'; ?>
 
                             if ($sql->rowCount()===1){
                                 if($tipoaccount==='amministratore') header ('location: Amministratore/dashboard.php');
-                                if($tipoaccount==='cliente') header('location: Cliente/dashboardcliente.php ');
-                                if($tipoaccount==='persona') header ('location: Terzaparte/dasboardterzaparte');
-
-
+                                    if($tipoaccount==='cliente') header('location: Cliente/dashboardcliente.php ');
+                                    if($tipoaccount==='persona') header ('location: Terzaparte/dasboardterzaparte');
+                                        
+                                    
 
                             }else {
                                 echo 'Attenzione il tuo account non esiste';
