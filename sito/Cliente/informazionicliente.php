@@ -87,9 +87,8 @@
                 <input type="text" class="form-control" id="marcasensore">
             </div>
             <div class=" text-center">
-            <button type="button" class="btn btn-success" >Annulla</button>
-            <button type="button" class="btn btn-success" >
-                <a hrefe="dashboard.html">Modifica</a></button>
+            <a hrefe="registrazionecliente.php"><button type="button" class="btn btn-success" >
+                 Modifica</button></a>
             </div>
             
         </div>
