@@ -1,10 +1,17 @@
 <?php
+session_start();
+if (!empty($_SESSION['user'])){
 require '../php/db.php';   
 $db=getDb();
-$query="SELECT amministratore.Id, impianto.Nome, cliente.Nome as NomeC from (((amministratore inner join amministratore_impianto on amministratore.Id=amministratore_impianto.AmministratoreId) inner join impianto on amministratore_impianto.ImpiantoId= impianto.Id) INNER join cliente on impianto.ClienteId=cliente.Id)";
+$query="SELECT amministratore.Id, impianto.Nome, cliente.Nome as NomeC from (((amministratore inner join amministratore_impianto on amministratore.Id=amministratore_impianto.AmministratoreId) inner join impianto on amministratore_impianto.ImpiantoId= impianto.Id) INNER join cliente on impianto.ClienteId=cliente.Id) where amministratore.User=:user";
 $sql=$db->prepare($query);
+$sql->bindParam(':user', $_SESSION['user']); 
 $sql->execute();
-
+}
+else
+{
+    header('location: ../login.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +75,7 @@ $sql->execute();
 
                     <li class="nav-item">
                         <a class="nav-link" href="../login.php">
-                            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                            <i class="fas fa-sign-out-alt"></i>Logout</a>
                     </li>
                 </ul>
             </div>
@@ -109,14 +116,41 @@ $sql->execute();
 
                                     <td>
 
-                                        <form method="post" action="modificaimpianto.php">
+                                        <form method="get" action="modificaimpianto.php">
                                             <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
                                             <button name="btnmodifica" type="submit" ><i class="fas fa-pencil-alt"> </i></button>
 
-                                            <a data-toggle="modal" data-target="#exampleModal"><button type="button"><i class="fas fa-trash-alt"></i></button></a>
+                                            <a data-toggle="modal" data-target="#deleteimpianto<?= $row['Id']; ?>"><button type="button"><i class="fas fa-trash-alt"></i></button></a>
                                         </form>
                                     </td>
                                 </tr>
+                                <!-- Delete Modal-->
+                                <div class="modal" fade id="deleteimpianto<?= $row['Id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Eliminare impianto?</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">x</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Seleziona elimina per eliminare</div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
+
+
+
+                                                <form method="post" action="eliminaimpianto.php">
+                                                    <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
+                                                    <a class="btn btn-primary" type="submit">Elimina</a>
+                                                </form>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <?php
                                 }
                                 ?>
@@ -144,35 +178,6 @@ $sql->execute();
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fa fa-angle-up"></i>
             </a>
-            <!-- Delete Modal-->
-            <div class="modal" fade id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Eliminare impianto?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">x</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Seleziona elimina per eliminare</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
-
-                            
-                            
-                            <form method="post" action="eliminaimpianto.php">
-
-                                <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
-                                <a class="btn btn-primary" href="dashboard.php">Elimina</a>
-
-
-                            </form>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
 

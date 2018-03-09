@@ -1,14 +1,21 @@
 <?php
+session_start();
+if (!empty($_SESSION['user'])){
 require '../php/db.php'; 
 $db='';
 $sql='';
 $db=getDb();
-$id=$_POST['txtid'];
+$id=$_GET['txtid'];
 echo $id;
 $query="SELECT sensore.Id, sensore.Tipo, sensore.Marca, sensore.Stato from sensore where sensore.ImpiantoId=:Id ; ";
 $sql=$db->prepare($query);
 $sql->bindParam(':Id',$id);
 $sql->execute();
+    }
+else
+{
+    header('location: dashboard.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +53,7 @@ $sql->execute();
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                         <a class="nav-link" href="dashboard.php">
-                           <i class="fas fa-tachometer-alt"></i>
+                            <i class="fas fa-tachometer-alt"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
@@ -73,7 +80,9 @@ $sql->execute();
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="../login.php" >
-                            <i class="fa fa-fw fa-sign-out" ></i>Logout</a>
+                            <i class="fa fa-fw fa-sign-out" ></i>Logout
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -114,28 +123,64 @@ $sql->execute();
                                         <td><?php echo $row['Marca'];  ?></td>
                                         <td>
                                             <?php 
-                                            if($row['Stato']==='0'){
-                                               ?> 
+                                        if($row['Stato']==='0'){
+                                            ?> 
                                             <i class="fal fa-circle" style="color:Red"></i>
-                                          <?php  }
+                                            <?php  }
                                         else
-                                    { ?>
-                                             <i class="fal fa-circle" style="color:Green"></i>
-                                       <?php } ?>
-                                           
+                                        { ?>
+                                            <i class="fal fa-circle" style="color:Green"></i>
+                                            <?php } ?>
+
                                         </td>  
                                         <td> 
-                                            <a data-toggle="modal" data-target="#exampleModal"><button type="button"><i class="fas fa-trash-alt"></i></button></a> 
+                                            <a data-toggle="modal" data-target="#exampleModal<?= $row['Id']; ?>"><button type="button"><i class="fas fa-trash-alt"></i></button></a> 
                                         </td>
                                     </tr>
+
+                                    <!-- Delete Modal-->
+                                    <div class="modal" fade id="exampleModal<?= $row['Id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Eliminare sensore?</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">x</span>
+                                                    </button>
+                                                </div>
+
+
+                                                <div class="modal-body">Seleziona elimina per eliminare</div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
+
+
+                                                    <form method="post" action="eliminasensore.php">
+                                                        
+                                                        <input type="hidden" name="txtimpianto" value="<?php echo $id; ?>">
+                                                        <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
+                                                        <button class="btn btn-primary" type='submit'>Elimina</button>
+                                                    </form>
+
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
                                     <?php
                                     }
                                     ?>
                                 </tbody>
                             </table>
                             <div class=" text-center">
-                                <a href="creasensore.php"> <button type="button" class="btn btn-success" >Aggiungi sensore</button></a>
+                                <a href="creasensore.php?idimpianto=<?= $id; ?>"> <button type="button" class="btn btn-success" >Aggiungi sensore</button></a>
+
+
                                 <a data-toggle="modal" data-target="#exampleModal" href="dashboard.php"> <button type="button" class="btn btn-success"> Elimina impianto</button></a>
+
+
                             </div>
 
                         </div>
@@ -155,24 +200,6 @@ $sql->execute();
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fa fa-angle-up"></i>
             </a>
-            <!-- Delete Modal-->
-            <div class="modal" fade id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Eliminare sensore?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">x</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Seleziona elimina per eliminare</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
-                            <a class="btn btn-primary" href="modificaimpianto.php">Elimina</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- elimina impianto Modal -->
             <div>
                 <div class="modal" fade id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
