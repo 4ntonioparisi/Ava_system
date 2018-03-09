@@ -1,7 +1,5 @@
 <?php
 require '../php/db.php';   
-$db='';
-$sql='';
 $db=getDb();
 $query="SELECT amministratore.Id, impianto.Nome, cliente.Nome as NomeC from (((amministratore inner join amministratore_impianto on amministratore.Id=amministratore_impianto.AmministratoreId) inner join impianto on amministratore_impianto.ImpiantoId= impianto.Id) INNER join cliente on impianto.ClienteId=cliente.Id)";
 $sql=$db->prepare($query);
@@ -38,16 +36,24 @@ $sql->execute();
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
+                <br>
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                         <a class="nav-link" href="dashboard.php">
-                            <i class="fa fa-fw fa-area-chart"></i>
+                            <i class="fas fa-tachometer-alt"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                         <a class="nav-link" href="creaimpianto.php">
-                            <i class="fa fa-fw fa-area-chart"></i>
+                            <i class="fas fa-industry"></i>
                             <span class="nav-link-text">Crea impianto</span>
+                        </a>
+                    </li>
+                    <br>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                        <a class="nav-link" href="aggiungi cliente.php">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="nav-link-text">Aggiungi cliente</span>
                         </a>
                     </li>
                 </ul>
@@ -106,73 +112,84 @@ $sql->execute();
                                         <form method="post" action="modificaimpianto.php">
                                             <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
                                             <button name="btnmodifica" type="submit" ><i class="fas fa-pencil-alt"> </i></button>
-                                        
-                                        <a data-toggle="modal" data-target="#exampleModal"><button type="button"><i class="fas fa-trash-alt"></i></button></a>
-                                </form>
-                                </td>
-                            </tr>
-                        <?php
+
+                                            <a data-toggle="modal" data-target="#exampleModal"><button type="button"><i class="fas fa-trash-alt"></i></button></a>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <?php
                                 }
-                        ?>
+                                ?>
 
-                        <tbody>
+                                <tbody>
 
 
 
-                        </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-    <footer class="sticky-footer">
-        <div class="container">
-            <div class="text-center">
-                <small>Copyright © Powerade by AVA_Group 2018</small>
-            </div>
-        </div>
-    </footer>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-    </a>
-    <!-- Delete Modal-->
-    <div class="modal" fade id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Eliminare impianto?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <footer class="sticky-footer">
+                <div class="container">
+                    <div class="text-center">
+                        <small>Copyright © Powerade by AVA_Group 2018</small>
+                    </div>
                 </div>
-                <div class="modal-body">Seleziona elimina per eliminare</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
-                    <a class="btn btn-primary" href="dashboard.php">Elimina</a>
+            </footer>
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+            <!-- Delete Modal-->
+            <div class="modal" fade id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminare impianto?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">x</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Seleziona elimina per eliminare</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
+
+                            
+                            
+                            <form method="post" action="eliminaimpianto.php">
+
+                                <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
+                                <a class="btn btn-primary" href="dashboard.php">Elimina</a>
+
+
+                            </form>
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+
+
+            <!-- Bootstrap core JavaScript-->
+            <script src="../vendor/jquery/jquery.min.js"></script>
+            <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Page level plugin JavaScript-->
+            <script src="../vendor/datatables/jquery.dataTables.js"></script>
+            <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="../js/sb-admin.min.js"></script>
+            <!-- Custom scripts for this page-->
+            <script src="../js/sb-admin-datatables.min.js"></script>
         </div>
-    </div>
-
-
-
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="../vendor/datatables/jquery.dataTables.js"></script>
-    <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin.min.js"></script>
-    <!-- Custom scripts for this page-->
-    <script src="../js/sb-admin-datatables.min.js"></script>
-    </div>
-</body>
+    </body>
 
 </html>

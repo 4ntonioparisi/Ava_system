@@ -29,16 +29,24 @@ require '../php/db.php'; ?>
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
+                <br>
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                         <a class="nav-link" href="dashboard.php">
-                            <i class="fa fa-fw fa-area-chart"></i>
+                           <i class="fas fa-tachometer-alt"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                         <a class="nav-link" href="creaimpianto.php">
-                            <i class="fa fa-fw fa-area-chart"></i>
+                            <i class="fas fa-industry"></i>
                             <span class="nav-link-text">Crea impianto</span>
+                        </a>
+                    </li>
+                    <br>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                        <a class="nav-link" href="aggiungi cliente.php">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="nav-link-text">Aggiungi cliente</span>
                         </a>
                     </li>
                 </ul>
