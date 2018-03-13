@@ -23,17 +23,9 @@ require '../php/db.php'; ?>
     <body class="bg-dark">
         <div class="container">
             <div class="card card-register mx-auto mt-5">
-                <div class="card-header">Registra un account</div>
+                <div class="card-header">Modifica informazioni cliente</div>
                 <div class="card-body">
                     <form>
-                        <div class="form-group">
-                            <label for="sel1">Registrati come:</label>
-                            <select name="sltipoaccount" class="form-control" id="sel1">
-                                <option value="cliente">Cliente</option>
-                                <option value="persona">Persona</option>
-
-                            </select>
-                        </div> 
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-6">
@@ -62,12 +54,8 @@ require '../php/db.php'; ?>
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary btn-block" href="login.php">Registrati</a>
+                        <a class="btn btn-primary btn-block" href="dashboardcliente.php">OK</a>
                     </form>
-                    <div class="text-center">
-                        <a class="d-block small mt-3" href="login.php">Pagina di login</a>
-                        
-                    </div>
                 </div>
             </div>
         </div>

@@ -86,8 +86,8 @@ require '../php/db.php'; ?>
 
                             <div class=" text-center">
                                 <button type="button" class="btn btn-success" >Annulla</button>
-                                
-                                    <a href="permessiterzaparte.php"></a><button type="button" class="btn btn-success">Avanti</button>
+                                <button type="button" class="btn btn-success" >
+                                    <a hrefe="dashboard.html">Avanti</a></button>
                             </div>
 
                         </div>

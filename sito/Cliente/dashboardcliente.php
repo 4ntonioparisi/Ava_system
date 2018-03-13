@@ -18,12 +18,13 @@ require '../php/db.php'; ?>
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- Custom styles for this template-->
         <link href="../css/sb-admin.css" rel="stylesheet">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     </head>
 
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <a class="navbar-brand" href="index.html">Cliente</a>
+            <a class="navbar-brand" href="informazionicliente.php">Cliente</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,17 +32,19 @@ require '../php/db.php'; ?>
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                         <a class="nav-link" href="informazionicliente.php">
-                            <i class="fa fa-fw fa-dashboard"></i>
-                           <span class="nav-link-text">Informazioni</span>
-                           
+                            <i class="fas fa-info"></i>
+                            <span class="nav-link-text">Informazioni</span>
+
                         </a>
                     </li>
 
 
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-                            <i class="fa fa-fw fa-file"></i>
-                            <span class="nav-link-text">Aggiungi Terza Parte</span>
+                        <a  class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                            <a class="nav-link" href="aggiungiterzaparte.php">
+                                <i class="fas fa-plus"></i>
+                                <spam class="nav-link-text">Aggiungi Terza Parte</spam>
+                            </a>
                         </a>
                         <ul class="sidenav-second-level collapse" id="collapseExamplePages">
 
@@ -63,7 +66,7 @@ require '../php/db.php'; ?>
 
                     <li class="nav-item">
                         <a href="../login.php" class="nav-link" >
-                            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                            <i class="fa fa-sign-out-alt"></i>Logout</a>
                     </li>
                 </ul>
             </div>
@@ -71,12 +74,10 @@ require '../php/db.php'; ?>
         <div class="content-wrapper">
             <div class="container-fluid">
                 <!-- Breadcrumbs-->
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
-                    </li>
 
-                </ol>
+                Dashboard
+                <br><br>
+
                 <!-- Area Chart Example-->
                 <div class="card mb-3">
                     <div class="card-header">
@@ -106,6 +107,10 @@ require '../php/db.php'; ?>
                             <!-- Custom scripts for this page-->
                             <script src="../js/sb-admin-charts.min.js"></script>
                         </div>
-                        </body>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 
-                    </html>
+</html>

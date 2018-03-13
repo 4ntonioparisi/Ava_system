@@ -19,7 +19,9 @@
   <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin.css" rel="stylesheet">
-</head>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    </head>
+    
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
@@ -31,9 +33,9 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="../dashboardcliente.php">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Informazioni</span>
+          <a class="nav-link" href="dashboardcliente.php">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="nav-link-text">Dashboard</span>
           </a>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
         </li>
@@ -51,8 +53,8 @@
    
       
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+          <a  href="../login.php" class="nav-link" >
+            <i class="fa fa-sign-out-alt"></i>Logout</a>
         </li>
       </ul>
     </div>
@@ -87,7 +89,9 @@
                 <input type="text" class="form-control" id="marcasensore">
             </div>
             <div class=" text-center">
-            <a hrefe="registrazionecliente.php"><button type="button" class="btn btn-success" >
+           <a href="dashboardcliente.php"><button type="button" class="btn btn-success" >
+                 Indietro</button></a>
+                <a href="registrazionecliente.php"><button type="button" class="btn btn-success" >
                  Modifica</button></a>
             </div>
             
