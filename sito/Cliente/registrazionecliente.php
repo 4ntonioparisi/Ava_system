@@ -23,17 +23,10 @@ require '../php/db.php'; ?>
     <body class="bg-dark">
         <div class="container">
             <div class="card card-register mx-auto mt-5">
-                <div class="card-header">Registra un account</div>
+                <div class="card-header">Modifica informazioni cliente</div>
                 <div class="card-body">
                     <form>
-                        <div class="form-group">
-                            <label for="sel1">Registrati come:</label>
-                            <select name="sltipoaccount" class="form-control" id="sel1">
-                                <option value="cliente">Cliente</option>
-                                <option value="persona">Persona</option>
 
-                            </select>
-                        </div> 
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-6">
@@ -57,25 +50,23 @@ require '../php/db.php'; ?>
                                     <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="exampleConfirmPassword">Confirm password</label>
+                                    <label for="exampleConfirmPassword">Conferma password</label>
                                     <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Conferma password">
+
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary btn-block" href="login.php">Registrati</a>
                     </form>
-                    <div class="text-center">
-                        <a class="d-block small mt-3" href="login.php">Pagina di login</a>
-                        
-                    </div>
+                    <a class="btn btn-primary btn-block" href="dashboardcliente.php">OK</a>
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="../vendor/jquery/jquery.min.js"></script>
-        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- Core plugin JavaScript-->
-        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+        
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
     </body>
 
 </html>

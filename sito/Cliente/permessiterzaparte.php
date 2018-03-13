@@ -51,6 +51,10 @@ require '../php/db.php'; ?>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
+
+
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="../login.php">
                             <i class="fas fa-sign-out-alt"></i>Logout</a>
@@ -66,24 +70,27 @@ require '../php/db.php'; ?>
                 <div class="card mb-3">
                     <div class="card-header"> 
                         <table  id="menu-item-432618" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home selected menu-item-432618">
-                            <th>Aggiungi terza parte</th>
+                            <th>Autorizza terza parte per :</th>
                         </table>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <div class="form-group">
-                                <label for="tiposensore">Nome:</label>
-                                <input type="text" class="form-control" id="tiposensore">
-                            </div> 
-                            <div class="form-group">
-                                <label for="marcasensore">Cognome:</label>
-                                <input type="text" class="form-control" id="marcasensore">
-                            </div>
+                            <form action="">
+                                <fieldset>
+                                    <input type="radio" name="btninfo" value="Informazioni Impianto"/> Informazioni Impianto
+                                    <br /> 
+                                    <input type="radio" name="btnultimerilevazioni" value="Ultime Rilevazioni"/> Ultime Rilevazioni
+                                    <br />
+                                    <input type="radio" name="btnrilevazioni" value="Tutte le Rilevazioni"/> Tutte le rilevazioni
+                                    <br />
+                                    <input type="radio" name="btntutto" value="Tutto"/> Tutto
+                                </fieldset>
+                            </form>
 
                             <div class=" text-center">
-                                <button type="button" class="btn btn-success" >Annulla</button>
-
-                                <a href="permessiterzaparte.php"><button type="button" class="btn btn-success">Avanti</button></a>
+                                <a href="aggiungiterzaparte.php"><button type="button" class="btn btn-success" >Indietro</button></a>
+                               
+                                <a href="dashboardcliente.php"><button type="button" class="btn btn-success" >Autorizza</button></a>
                             </div>
 
                         </div>
@@ -118,3 +125,4 @@ require '../php/db.php'; ?>
         </div>
     </body>
 </html>
+
