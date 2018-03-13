@@ -1,26 +1,25 @@
 <?php
 session_start();
 if (!empty($_SESSION['user'])){
-require '../php/db.php'; 
-$db='';
-$sql='';
-$db=getDb();
-$id=$_GET['txtid'];
-echo $id;
-$query="SELECT sensore.Id, sensore.Tipo, sensore.Marca, sensore.Stato from sensore where sensore.ImpiantoId=:Id ; ";
-$sql=$db->prepare($query);
-$sql->bindParam(':Id',$id);
-$sql->execute();
-    }
+    require '../php/db.php'; 
+    $db='';
+    $sql='';
+    $db=getDb();
+    $id=$_GET['txtid'];
+    echo $id;
+    $query="SELECT sensore.Id, sensore.Tipo, sensore.Marca, sensore.Stato from sensore where sensore.ImpiantoId=:Id ; ";
+    $sql=$db->prepare($query);
+    $sql->bindParam(':Id',$id);
+    $sql->execute();
+}
 else
 {
-    header('location: dashboard.php');
+    header('location:dashboard.php');
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="it">
-
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,8 +36,6 @@ else
         <!-- Custom styles for this template-->
         <link href="../css/sb-admin.css" rel="stylesheet">
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
-
     </head>
 
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -64,7 +61,7 @@ else
                     </li>
                     <br>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="aggiungi cliente.php">
+                        <a class="nav-link" href="aggiungicliente.php">
                             <i class="fas fa-user-plus"></i>
                             <span class="nav-link-text">Aggiungi cliente</span>
                         </a>
@@ -88,7 +85,6 @@ else
         </nav>
         <div class="content-wrapper">
             <div class="container-fluid">
-
 
                 <!-- Example DataTables Card-->
                 <div class="card mb-3">
@@ -156,7 +152,7 @@ else
 
 
                                                     <form method="post" action="eliminasensore.php">
-                                                        
+
                                                         <input type="hidden" name="txtimpianto" value="<?php echo $id; ?>">
                                                         <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
                                                         <button class="btn btn-primary" type='submit'>Elimina</button>
@@ -175,11 +171,14 @@ else
                                 </tbody>
                             </table>
                             <div class=" text-center">
-                                <a href="creasensore.php?idimpianto=<?= $id; ?>"> <button type="button" class="btn btn-success" >Aggiungi sensore</button></a>
+                                <form method="post" action="eliminaimpianto.php">
+                                    <a href="dashboard.php?idimpianto=<?= $id; ?>"> <button type="submit" class="btn btn-success"> Annulla</button></a>
+                                    
+                                    <a href="creasensore.php?idimpianto=<?= $id; ?>"> <button type="button" class="btn btn-success" >Aggiungi sensore</button></a>
 
-
-                                <a data-toggle="modal" data-target="#exampleModal" href="dashboard.php"> <button type="button" class="btn btn-success"> Elimina impianto</button></a>
-
+                                    <input type="hidden" name="txtid" value="<?php echo $id; ?>">
+                                    <button class="btn btn-success" type='submit'>Elimina impianto</button>
+                                </form>
 
                             </div>
 
@@ -234,5 +233,4 @@ else
             <script src="../js/sb-admin-datatables.min.js"></script>
         </div>
     </body>
-
 </html>

@@ -1,12 +1,12 @@
 <?php
 session_start();
 if (!empty($_SESSION['user'])){
-require '../php/db.php';   
-$db=getDb();
-$query="SELECT amministratore.Id, impianto.Nome, cliente.Nome as NomeC from (((amministratore inner join amministratore_impianto on amministratore.Id=amministratore_impianto.AmministratoreId) inner join impianto on amministratore_impianto.ImpiantoId= impianto.Id) INNER join cliente on impianto.ClienteId=cliente.Id) where amministratore.User=:user";
-$sql=$db->prepare($query);
-$sql->bindParam(':user', $_SESSION['user']); 
-$sql->execute();
+    require '../php/db.php';   
+    $db=getDb();
+    $query="SELECT amministratore.Id, impianto.Nome, cliente.Nome as NomeC from (((amministratore inner join amministratore_impianto on amministratore.Id=amministratore_impianto.AmministratoreId) inner join impianto on amministratore_impianto.ImpiantoId= impianto.Id) INNER join cliente on impianto.ClienteId=cliente.Id) where amministratore.User=:user";
+    $sql=$db->prepare($query);
+    $sql->bindParam(':user', $_SESSION['user']); 
+    $sql->execute();
 }
 else
 {
@@ -58,7 +58,7 @@ else
                     </li>
                     <br>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="aggiungi cliente.php">
+                        <a class="nav-link" href="aggiungicliente.php">
                             <i class="fas fa-user-plus"></i>
                             <span class="nav-link-text">Aggiungi cliente</span>
                         </a>
@@ -82,8 +82,6 @@ else
         </nav>
         <div class="content-wrapper">
             <div class="container-fluid">
-
-
                 <!-- Example DataTables Card-->
                 <div class="card mb-3">
                     <div class="card-header"> 
@@ -102,6 +100,11 @@ else
                                         <th> </th>
                                     </tr>
                                 </thead>
+
+
+
+
+                                <tbody>
 
                                 <?php
                                 $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -124,6 +127,8 @@ else
                                         </form>
                                     </td>
                                 </tr>
+
+
                                 <!-- Delete Modal-->
                                 <div class="modal" fade id="deleteimpianto<?= $row['Id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -137,29 +142,19 @@ else
                                             <div class="modal-body">Seleziona elimina per eliminare</div>
                                             <div class="modal-footer">
                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
-
-
-
                                                 <form method="post" action="eliminaimpianto.php">
                                                     <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
                                                     <a class="btn btn-primary" type="submit">Elimina</a>
                                                 </form>
-
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <?php
                                 }
                                 ?>
-
-                                <tbody>
-
-
-
                                 </tbody>
+
                             </table>
                         </div>
                     </div>

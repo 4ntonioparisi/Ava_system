@@ -6,10 +6,8 @@ require '../php/db.php';
 else
 {
     header('location: ../login.php');
-}
-   
+}  
 ?>
-
 <!DOCTYPE html>
 <html lang="it">
 
@@ -53,7 +51,7 @@ else
                     </li>
                     <br>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="aggiungi cliente.php">
+                        <a class="nav-link" href="aggiungicliente.php">
                             <i class="fas fa-user-plus"></i>
                             <span class="nav-link-text">Aggiungi cliente</span>
                         </a>
@@ -71,7 +69,7 @@ else
 
                     <li class="nav-item">
                         <a class="nav-link" href="../login.php" >
-                            <i class="fa fa-fw fa-sign-out" ></i>Logout</a>
+                            <i class="fa fa-sign-out-alt" ></i>Logout</a>
 
                     </li>
                 </ul>
@@ -97,8 +95,30 @@ else
                             <label for="nomecliente">Nome Cliente:</label>
                             <input type="text" class="form-control" id="nomecliente">
                         </div> 
+                         <?php 
+                            if(!empty($_POST['btnaggiungi'])){
+                                $nomeimpianto=$_POST['nomeimpianto'];
+                                $nomecliente=$_POST['nomecliente'];
+                                $db=getDb();
+                                
+                                
+                                $query='INSERT INTO cliente (Nome, Città, User, Password) VALUES (":nomecliente", ":città",  ":usercliente", ":passwordcliente")';
+                                $sql=null;
+                                $sql = $db->prepare($query);
+                                $sql->bindParam(':nomeimpianto', $nomeimpianto);
+                                $sql->bindParam(':nomecliente', $nomecliente);
+                                $sql->execute();
+                                if ($sql){
+                                    header('location: creasensore.php');
+                                }else{
+                                    echo 'errore';
+                                }                                
+                            }
+                            ?>
+                        
                         <div class=" text-center">
-                            <a href="creasensore.php"><button type="button" class="btn btn-success" >Nuovo sensore</button></a>
+                            <a href="dashboard.php?idimpianto=<?= $id; ?>"> <button type="submit" class="btn btn-success"> Annulla</button></a>
+                            <a href="creasensore.php"><button type="submit" class="btn btn-success" >Nuovo sensore</button></a>
                         </div>
 
                     </div>

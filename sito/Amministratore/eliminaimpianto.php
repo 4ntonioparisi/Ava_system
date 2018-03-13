@@ -22,9 +22,5 @@ else
 {
     header('location: dashboard.php');
 }
-    
-    
-
-
 ?>
 
