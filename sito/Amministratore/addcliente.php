@@ -6,9 +6,9 @@ if (!empty($_SESSION['user'])){
 else
 {
     header('location: ../login.php');
-}  
-?>
+}
 
+?>
 <!DOCTYPE html>
 <html lang="it">
 
@@ -44,6 +44,7 @@ else
                             <i class="fas fa-tachometer-alt"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
+                    </li>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                         <a class="nav-link" href="creaimpianto.php">
                             <i class="fas fa-industry"></i>
@@ -70,7 +71,7 @@ else
 
                     <li class="nav-item">
                         <a class="nav-link" href="../login.php" >
-                            <i class="fa fa-fw fa-sign-out" ></i>Logout</a>
+                            <i class="fas fa-sign-out-alt"></i>Logout</a>
 
                     </li>
                 </ul>
@@ -78,42 +79,53 @@ else
         </nav>
         <div class="content-wrapper">
             <div class="container-fluid">
-
-
                 <!-- Example DataTables Card-->
                 <div class="card mb-3">
                     <div class="card-header"> 
                         <table  id="menu-item-432618" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home selected menu-item-432618">
-                            <th>Crea impianto</th>
+                            <th>Aggiungi cliente</th>
                         </table>
                     </div>
                     <div class="card-body">
-                        <form method='post'>
+                        <form method="post">
                             <div class="form-group">
-                                <label for="nomeimpianto">Nome Impianto:</label>
-                                <input type="text" class="form-control" id="nomeimpianto">
+                                <label for="nomeimpianto">Nome cliente:</label>
+                                <input type="text" class="form-control" id="nomecliente">
                             </div>
                             <div class="form-group">
-                                <label for="nomecliente">Nome Cliente:</label>
-                                <input type="text" class="form-control" id="nomecliente">
+                                <label for="nomecliente">Città</label>
+                                <input type="text" class="form-control" id="città">
                             </div> 
+                            <div class="form-group">
+                                <label for="statosensore">User:</label>
+                                <input type="text" class="form-control" name="usercliente">
+                            </div>
+                            <div class="form-group">
+                                <label for="statosensore">Password:</label>
+                                <input type="text" class="form-control" name="passwordcliente">
+                            </div>
                             <div class=" text-center">
-                                 <button type="submit" class="btn btn-success" name="btnnuovsensore" >Nuovo sensore</button>
+                                <button type="submit" class="btn btn-success"  name="btnaggiungi">Aggiungi</button>
+                                <button type="reset" class="btn btn-success" >Annulla</button>
+                                
                             </div>
                         </form>
                         <?php
-                        if(!empty($_POST['btnnuovosensore'])){
-                            $nomeimpianto=$_POST['nomeimpianto'];
+                        if(!empty($_POST['btnaggiungi'])){
                             $nomecliente=$_POST['nomecliente'];
+                            $città=$_POST['città'];
+                            $usercliente=$_POST['usercliente'];
+                            $passwordcliente=$_POST['passwordcliente'];
+                            
                             $db=getDb();
-                            $query='INSERT INTO impianto (Nome, ClienteId) 
-                                    VALUES (":nomeimpianto", ":nomecliente")
-                                    SELECT Nome, ClienteId 
-                                    FROM Impianto inner join cliente on impianto.ClienteId=cliente.Id
-                                    WHERE impianto.ClienteId=cliente.Id';
+                            $query='INSERT INTO cliente (Nome, Città, User, Password) VALUES (":nomecliente", ":città",  ":usercliente", ":passwordcliente")';
+
                             $sql = $db->prepare($query);
-                            $sql->bindParam(':nomeimpianto', $nomeimpianto);
                             $sql->bindParam(':nomecliente', $nomecliente);
+                            $sql->bindParam(':città', $città);
+                            $sql->bindParam(':usercliente', $usercliente);
+                            $sql->bindParam(':passwordcliente', $passwordcliente);
+                            $sql->bindParam(':idcliente', $id);
                             $sql->execute();
                             if ($sql){
                                 header('location: dashboard.php');

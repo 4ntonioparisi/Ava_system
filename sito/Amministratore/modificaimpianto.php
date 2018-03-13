@@ -44,7 +44,7 @@ else
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <a class="navbar-brand" href="index.html">Amministatore</a>
+            <a class="navbar-brand" href="index.php">Amministatore</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -64,7 +64,7 @@ else
                     </li>
                     <br>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="aggiungi cliente.php">
+                        <a class="nav-link" href="aggiungicliente.php">
                             <i class="fas fa-user-plus"></i>
                             <span class="nav-link-text">Aggiungi cliente</span>
                         </a>
