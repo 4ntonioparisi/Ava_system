@@ -31,7 +31,7 @@ require 'php/db.php'; ?>
                         <div class="form-group">
                             <label for="sel1">Accedi come:</label>
                             <select name="sltipoaccount" class="form-control" id="sel1">
-                                <option value="cliente">Amministratore</option>
+                                <option value="amministratore">Amministratore</option>
                                 <option value="cliente">Cliente</option>
                                 <option value="persona">Persona</option>
 
@@ -69,9 +69,14 @@ require 'php/db.php'; ?>
                             $sql->execute();
 
                             if ($sql->rowCount()===1){
+
+                                session_start();
+                                $_SESSION['user']=$user;
+
+
                                 if($tipoaccount==='amministratore') header ('location: Amministratore/dashboard.php');
                                 if($tipoaccount==='cliente') header('location: Cliente/dashboardcliente.php ');
-                                if($tipoaccount==='persona') header ('location: Terzaparte/dasboardterzaparte');
+                                if($tipoaccount==='persona') header ('location: Terzaparte/dashboardterzaparte.php');
 
 
 

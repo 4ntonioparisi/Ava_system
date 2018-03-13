@@ -1,5 +1,15 @@
 <?php
-require '../php/db.php'; ?>
+session_start();
+$id = $_GET['idimpianto'];
+if (!empty($_SESSION['user'])){
+    require '../php/db.php';
+}
+else
+{
+    //header('location: ../login.php');
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -33,7 +43,7 @@ require '../php/db.php'; ?>
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                         <a class="nav-link" href="dashboard.php">
-                           <i class="fas fa-tachometer-alt"></i>
+                            <i class="fas fa-tachometer-alt"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
@@ -58,9 +68,10 @@ require '../php/db.php'; ?>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                   <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="../login.php" >
-                            <i class="fa fa-fw fa-sign-out" ></i>Logout</a>
+                            <i class="fa fa-fw fa-sign-out" ></i>Logout
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -78,26 +89,52 @@ require '../php/db.php'; ?>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <div class="form-group">
-                                <label for="tiposensore">Tipo sensore:</label>
-                                <input type="text" class="form-control" id="tiposensore">
-                            </div> 
-                            <div class="form-group">
-                                <label for="marcasensore">Marca sensore:</label>
-                                <input type="text" class="form-control" id="marcasensore">
-                            </div>
-                            <div class="form-group">
-                                <label for="statosensore">Stato sensore:</label>
-                                <input type="text" class="form-control" id="statosensore">
-                            </div>
-                            <div class=" text-center">
-                                <a href="creaimpianto.php"> <button type="button" class="btn btn-success"> Indietro</button></a>
-                                <a href="dashboard.php"> <button type="button" class="btn btn-success"> Aggiungi</button></a>
-                                <a href="creasensore.php"> <button type="button" class="btn btn-success" >Annulla</button></a>
+                            <form method="post" >
+                                <div class="form-group">
+                                    <label for="tiposensore">Tipo sensore:</label>
+                                    <input type="text" class="form-control" name="tiposensore">
+                                </div> 
+                                <div class="form-group">
+                                    <label for="marcasensore">Marca sensore:</label>
+                                    <input type="text" class="form-control" name="marcasensore">
+                                </div>
+                                <div class="form-group">
+                                    <label for="statosensore">Stato sensore:</label>
+                                    <input type="text" class="form-control" name="statosensore">
+                                </div>
 
 
-                            </div>
+                                <div class=" text-center">
+                                    <a href="creaimpianto.php"> <button type="button" class="btn btn-success"> Indietro</button></a>
+                                    <button type="submit" class="btn btn-success" name='btnaggiungi' value="Aggiungi">Aggiungi</button>
+                                    <button type="reset" class="btn btn-success" >Annulla</button>
+                                </div>       
+                            </form>
 
+
+                            <?php 
+                            if(!empty($_POST['btnaggiungi'])){
+                                $tiposensore=$_POST['tiposensore'];
+                                $marcasensore=$_POST['marcasensore'];
+                                $statosensore=$_POST['statosensore'];
+                                $db=getDb();
+                                $query='INSERT INTO sensore (Tipo, Marca, Stato, ImpiantoId) VALUES (":tiposensore", ":marcasensore",  ":statosensore", ":idimpianto")';
+                                $sql=null;
+                                $sql = $db->prepare($query);
+                                $sql->bindParam(':tiposensore', $tiposensore);
+                                $sql->bindParam(':marcasensore', $marcasensore);
+                                $sql->bindParam(':statosensore', $statosensore);
+                                $sql->bindParam(':idimpianto', $id);
+                                $sql->execute();
+                                if ($sql){
+                                    header('location: dashboard.php');
+                                }else{
+                                    echo 'errore';
+                                }
+                            }
+
+
+                            ?>
                         </div>
                     </div>
                 </div>

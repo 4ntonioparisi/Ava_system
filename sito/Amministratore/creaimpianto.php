@@ -1,5 +1,14 @@
 <?php
-require '../php/db.php'; ?>
+session_start();
+if (!empty($_SESSION['user'])){
+require '../php/db.php';
+}
+else
+{
+    header('location: ../login.php');
+}
+   
+?>
 
 <!DOCTYPE html>
 <html lang="it">
