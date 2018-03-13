@@ -1,16 +1,9 @@
 <?php
-session_start();
-$id = $_GET['idimpianto'];
-if (!empty($_SESSION['user'])){
-    require '../php/db.php';
-}
-else
-{
-    header('location:../login.php');
-}
-?>
+require '../php/db.php'; ?>
+
 <!DOCTYPE html>
 <html lang="it">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,8 +19,8 @@ else
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <!-- Custom styles for this template-->
         <link href="../css/sb-admin.css" rel="stylesheet">
-        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     </head>
+
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
@@ -40,7 +33,7 @@ else
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                         <a class="nav-link" href="dashboard.php">
-                            <i class="fas fa-tachometer-alt"></i>
+                           <i class="fas fa-tachometer-alt"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
@@ -51,7 +44,7 @@ else
                     </li>
                     <br>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="aggiungicliente.php">
+                        <a class="nav-link" href="aggiungi cliente.php">
                             <i class="fas fa-user-plus"></i>
                             <span class="nav-link-text">Aggiungi cliente</span>
                         </a>
@@ -65,16 +58,17 @@ else
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="../login.php">
-                            <i class="fas fa-sign-out-alt"></i>Logout</a>
+                   <li class="nav-item">
+                        <a class="nav-link" href="../login.php" >
+                            <i class="fa fa-fw fa-sign-out" ></i>Logout</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <div class="content-wrapper">
             <div class="container-fluid">
+
+
                 <!-- Example DataTables Card-->
                 <div class="card mb-3">
                     <div class="card-header"> 
@@ -84,47 +78,26 @@ else
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <form method="post" >
-                                <div class="form-group">
-                                    <label for="tiposensore">Tipo sensore:</label>
-                                    <input type="text" class="form-control" name="tiposensore">
-                                </div> 
-                                <div class="form-group">
-                                    <label for="marcasensore">Marca sensore:</label>
-                                    <input type="text" class="form-control" name="marcasensore">
-                                </div>
-                                <div class="form-group">
-                                    <label for="statosensore">Stato sensore:</label>
-                                    <input type="text" class="form-control" name="statosensore">
-                                </div>
-                                <div class=" text-center">
-                                    <a href="creaimpianto.php"> <button type="button" class="btn btn-success"> Indietro</button></a>
-                                    <button type="submit" class="btn btn-success" name='btnaggiungi' value="Aggiungi">Aggiungi</button>
-                                    <button type="reset" class="btn btn-success" >Annulla</button>
-                                </div>       
+                            <div class="form-group">
+                                <label for="tiposensore">Tipo sensore:</label>
+                                <input type="text" class="form-control" id="tiposensore">
+                            </div> 
+                            <div class="form-group">
+                                <label for="marcasensore">Marca sensore:</label>
+                                <input type="text" class="form-control" id="marcasensore">
+                            </div>
+                            <div class="form-group">
+                                <label for="statosensore">Stato sensore:</label>
+                                <input type="text" class="form-control" id="statosensore">
+                            </div>
+                            <div class=" text-center">
+                                <a href="creaimpianto.php"> <button type="button" class="btn btn-success"> Indietro</button></a>
+                                <a href="dashboard.php"> <button type="button" class="btn btn-success"> Aggiungi</button></a>
+                                <a href="creasensore.php"> <button type="button" class="btn btn-success" >Annulla</button></a>
 
-                            </form>
-                            <?php 
-                            if(!empty($_POST['btnaggiungi'])){
-                                $tiposensore=$_POST['tiposensore'];
-                                $marcasensore=$_POST['marcasensore'];
-                                $statosensore=$_POST['statosensore'];
-                                $db=getDb();
-                                $query='INSERT INTO sensore (Tipo, Marca, Stato, ImpiantoId) VALUES (":tiposensore", ":marcasensore",  ":statosensore", ":idimpianto")';
-                                $sql=null;
-                                $sql = $db->prepare($query);
-                                $sql->bindParam(':tiposensore', $tiposensore);
-                                $sql->bindParam(':marcasensore', $marcasensore);
-                                $sql->bindParam(':statosensore', $statosensore);
-                                $sql->bindParam(':idimpianto', $id);
-                                $sql->execute();
-                                if ($sql){
-                                    header('location:modificaimpianto.php');
-                                }else{
-                                    echo 'errore';
-                                }                                
-                            }
-                            ?>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -133,7 +106,7 @@ else
                 <footer class="sticky-footer">
                     <div class="container">
                         <div class="text-center">
-                            <small>Copyright © Powerade by AVA_Group 2018</small>
+                            <small>Copyright © Your Website 2018</small>
                         </div>
                     </div>
                 </footer>
@@ -156,7 +129,6 @@ else
                 <!-- Custom scripts for this page-->
                 <script src="../js/sb-admin-datatables.min.js"></script>
             </div>
-        </div>
-    </body>
+            </body>
 
-</html>
+        </html>
