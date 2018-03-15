@@ -22,9 +22,39 @@ require '../php/db.php'; ?>
     </head>
 
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <?php
+                        if (!empty($_POST['btnlogin'])){
+                            $user=$_POST['inputuser'];
+                            $password=$_POST['inputpassword'];
+                            $tipoaccount=$_POST['sltipoaccount'];
+                            $db=getDb();
+
+                            $query= 'select * from '.$tipoaccount.' where User=:user and Password=:password';
+                            $sql=$db->prepare($query);
+                            $sql->bindParam(':user',$user); 
+                            $sql->bindParam(':password',$password);
+                            $sql->execute();
+
+                            if ($sql->rowCount()===1){
+
+                                session_start();
+                                $_SESSION['user']=$user;
+
+
+                                if($tipoaccount==='amministratore') header ('location: Amministratore/dashboard.php');
+                                if($tipoaccount==='cliente') header('location: Cliente/dashboardcliente.php ');
+                                if($tipoaccount==='persona') header ('location: Terzaparte/dashboardterzaparte.php');
+
+
+
+                            }else {
+                                echo 'Attenzione il tuo account non esiste';
+                            }
+                        }
+                        ?>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <a class="navbar-brand" href="index.html">Cliente</a>
+            <a class="navbar-brand" style="color:white">Cliente</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

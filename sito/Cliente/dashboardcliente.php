@@ -24,7 +24,7 @@ require '../php/db.php'; ?>
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <a class="navbar-brand" href="informazionicliente.php">Cliente</a>
+             <a class="navbar-brand" style="color:white">Cliente</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,7 +40,7 @@ require '../php/db.php'; ?>
 
 
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                        <a  class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                        <a  class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard"></a>
                             <a class="nav-link" href="aggiungiterzaparte.php">
                                 <i class="fas fa-plus"></i>
                                 <spam class="nav-link-text">Aggiungi Terza Parte</spam>
@@ -78,7 +78,10 @@ require '../php/db.php'; ?>
                 <!-- Area Chart Example-->
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fa fa-area-chart"></i> Nome impianto</div>
+                        <select name="slnomeimpianto" class="form-control" id="sel1">
+                                <option value="nomeimpianto1">Impiantisctica andria</option>
+                                <option value="nomeimpianto2">Pianeta impianto</option>
+                            </select>
                     <div class="card-body">
                         <canvas id="myAreaChart" width="100%" height="30"></canvas>
                     </div>
@@ -107,6 +110,7 @@ require '../php/db.php'; ?>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </body>
 
