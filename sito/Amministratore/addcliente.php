@@ -6,11 +6,18 @@ if (!empty($_SESSION['user'])){
 else
 {
     header('location: ../login.php');
-}
-
+} 
+?>
+<?php
+$name = "";
+$city = "";
+$usr = "";
+$pwd = "";
 ?>
 <!DOCTYPE html>
 <html lang="it">
+
+
 
     <head>
         <meta charset="utf-8">
@@ -87,53 +94,90 @@ else
                         </table>
                     </div>
                     <div class="card-body">
-                        <form method="post">
+
+                        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" >
                             <div class="form-group">
-                                <label for="nomeimpianto">Nome cliente:</label>
-                                <input type="text" class="form-control" id="nomecliente">
+                                <label for="name">Nome cliente:</label>
+                                <input type="text" class="form-control" name="name" value="<?php echo $name;?>">
                             </div>
+
                             <div class="form-group">
-                                <label for="nomecliente">Città</label>
-                                <input type="text" class="form-control" id="città">
+                                <label for="city">Città</label>
+                                <input type="text" class="form-control" name="city" value="<?php echo $city;?>">
                             </div> 
                             <div class="form-group">
-                                <label for="statosensore">User:</label>
-                                <input type="text" class="form-control" name="usercliente">
+                                <label for="usr">User:</label>
+                                <input type="text" class="form-control" name="usr" value="<?php echo $usr;?>">
                             </div>
                             <div class="form-group">
-                                <label for="statosensore">Password:</label>
-                                <input type="text" class="form-control" name="passwordcliente">
+                                <label for="pwd">Password:</label>
+                                <input type="text" class="form-control" name="pwd" value="<?php echo $pwd;?>">
                             </div>
                             <div class=" text-center">
-                                <button type="submit" class="btn btn-success"  name="btnaggiungi">Aggiungi</button>
                                 <button type="reset" class="btn btn-success" >Annulla</button>
-                                
+                                <!--<a data-toggle="modal" data-target="#exampleModal"><button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi </button></a>  -->
+
+                                <button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi</button>
+
                             </div>
+
                         </form>
                         <?php
-                        if(!empty($_POST['btnaggiungi'])){
-                            $nomecliente=$_POST['nomecliente'];
-                            $città=$_POST['città'];
-                            $usercliente=$_POST['usercliente'];
-                            $passwordcliente=$_POST['passwordcliente'];
-                            
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            if (!empty($_POST["name"]))
+                                $name = $_POST["name"];
+                            if (!empty($_POST["city"])) 
+                                $city = $_POST["city"];
+                            if (!empty($_POST["usr"])) 
+                                $usr = $_POST["usr"];
+                            if (!empty($_POST["pwd"])) 
+                                $pwd = $_POST["pwd"];
+                            echo $name;
+                            echo $city;
+                            echo $usr;
+                            echo $pwd;
                             $db=getDb();
-                            $query='INSERT INTO cliente (Nome, Città, User, Password) VALUES (":nomecliente", ":città",  ":usercliente", ":passwordcliente")';
 
+                            $query="INSERT INTO cliente (Nome, Città, User, Password) VALUES (':name', ':city', ':usr', ':pwd')";
                             $sql = $db->prepare($query);
-                            $sql->bindParam(':nomecliente', $nomecliente);
-                            $sql->bindParam(':città', $città);
-                            $sql->bindParam(':usercliente', $usercliente);
-                            $sql->bindParam(':passwordcliente', $passwordcliente);
-                            $sql->bindParam(':idcliente', $id);
+
+                            $sql->bindParam(':name', $name);
+                            $sql->bindParam(':city', $city);
+                            $sql->bindParam(':usr', $usr);
+                            $sql->bindParam(':pwd', $pwd);
                             $sql->execute();
-                            if ($sql){
-                                header('location: dashboard.php');
-                            }else{
-                                echo 'errore';
-                            }                                
-                        }
-                        ?>
+
+                            // $sql="INSERT INTO cliente (Nome, Città, User, Password) VALUES (':name', ':city', ':usr', ':pwd')";
+                            //    $stmt = $db->prepare($sql);
+                            // $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+                            //    $stmt->bindParam(':city', $city, PDO::PARAM_STR);
+                            //  $stmt->bindParam(':usr', $usr, PDO::PARAM_STR);
+                            //    $stmt->bindParam(':pwd', $pwd, PDO::PARAM_STR);
+                            //  $stmt->execute();
+                        }?>
+
+
+
+                        <!-- Add Modal-->
+                        <!-- <div class="modal" fade id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Aggiungi cliente.</h5>
+<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">x</span>
+</button>
+</div>
+<div class="modal-body">Il cliente è stato aggiunto.</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
+<form method="post" action="dashboard.php">
+<button class="btn btn-primary" type='submit'>ok</button>
+</form>
+</div>
+</div>
+</div>
+</div> -->
 
                     </div>
                 </div>
@@ -151,8 +195,6 @@ else
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fa fa-angle-up"></i>
             </a>
-            <!-- Logout Modal-->
-
 
             <!-- Bootstrap core JavaScript-->
             <script src="../vendor/jquery/jquery.min.js"></script>

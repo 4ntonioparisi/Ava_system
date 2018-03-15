@@ -79,7 +79,6 @@ else
         <div class="content-wrapper">
             <div class="container-fluid">
 
-
                 <!-- Example DataTables Card-->
                 <div class="card mb-3">
                     <div class="card-header"> 
@@ -105,6 +104,8 @@ else
                         if(!empty($_POST['btnnuovosensore'])){
                             $nomeimpianto=$_POST['nomeimpianto'];
                             $nomecliente=$_POST['nomecliente'];
+                            echo $nomeimpianto;
+                            echo $nomecliente;
                             $db=getDb();
                             $query='INSERT INTO impianto (Nome, ClienteId) 
                                     VALUES (":nomeimpianto", ":nomecliente")
@@ -139,9 +140,7 @@ else
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fa fa-angle-up"></i>
             </a>
-            <!-- Logout Modal-->
-
-
+           
             <!-- Bootstrap core JavaScript-->
             <script src="../vendor/jquery/jquery.min.js"></script>
             <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

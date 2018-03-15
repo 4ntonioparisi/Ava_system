@@ -32,3 +32,4 @@ catch(PDOException $e)
 }
 return $connessione;
 }
+?>
