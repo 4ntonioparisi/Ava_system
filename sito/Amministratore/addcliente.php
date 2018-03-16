@@ -13,7 +13,32 @@ $name = "";
 $city = "";
 $usr = "";
 $pwd = "";
-?>
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!empty($_POST["name"]))
+        $name = $_POST["name"];
+    if (!empty($_POST["city"])) 
+        $city = $_POST["city"];
+    if (!empty($_POST["usr"])) 
+        $usr = $_POST["usr"];
+    if (!empty($_POST["pwd"])) 
+        $pwd = $_POST["pwd"];
+    echo $name;
+    echo $city;
+    echo $usr;
+    echo $pwd;
+    $db=getDb();
+
+    $query="INSERT INTO cliente (Nome, Città, User, Password) VALUES ('$name', '$city', '$usr', '$pwd')";
+    $sql = $db->prepare($query);
+
+
+    $sql->execute();
+    echo $query;
+
+}?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -117,42 +142,12 @@ $pwd = "";
                                 <button type="reset" class="btn btn-success" >Annulla</button>
                                 <!--<a data-toggle="modal" data-target="#exampleModal"><button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi </button></a>  -->
 
-                                <button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi</button>
+                               <a href="dashboard.php"> <button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi</button> </a> 
 
                             </div>
 
                         </form>
-                        <?php
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            if (!empty($_POST["name"]))
-                                $name = $_POST["name"];
-                            if (!empty($_POST["city"])) 
-                                $city = $_POST["city"];
-                            if (!empty($_POST["usr"])) 
-                                $usr = $_POST["usr"];
-                            if (!empty($_POST["pwd"])) 
-                                $pwd = $_POST["pwd"];
-                            echo $name;
-                            echo $city;
-                            echo $usr;
-                            echo $pwd;
-                            $db=getDb();
 
-                            $query="INSERT INTO cliente (Nome, Città, User, Password) VALUES ('$name', '$city', '$usr', '$pwd')";
-                            $sql = $db->prepare($query);
-
-                            
-                            $sql->execute();
-                            echo $query;
-
-                            // $sql="INSERT INTO cliente (Nome, Città, User, Password) VALUES (':name', ':city', ':usr', ':pwd')";
-                            //    $stmt = $db->prepare($sql);
-                            // $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-                            //    $stmt->bindParam(':city', $city, PDO::PARAM_STR);
-                            //  $stmt->bindParam(':usr', $usr, PDO::PARAM_STR);
-                            //    $stmt->bindParam(':pwd', $pwd, PDO::PARAM_STR);
-                            //  $stmt->execute();
-                        }?>
 
 
 

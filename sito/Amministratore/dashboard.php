@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['user'])){
 require '../php/db.php';   
 $db=getDb();
-$query="SELECT amministratore.Id, impianto.Nome, cliente.Nome as NomeC from (((amministratore inner join amministratore_impianto on amministratore.Id=amministratore_impianto.AmministratoreId) inner join impianto on amministratore_impianto.ImpiantoId= impianto.Id) INNER join cliente on impianto.ClienteId=cliente.Id) where amministratore.User=:user";
+$query="SELECT impianto.Id, impianto.Nome, cliente.Nome as NomeC from (((amministratore inner join amministratore_impianto on amministratore.Id=amministratore_impianto.AmministratoreId) inner join impianto on amministratore_impianto.ImpiantoId= impianto.Id) INNER join cliente on impianto.ClienteId=cliente.Id) where amministratore.User=:user";
 $sql=$db->prepare($query);
 $sql->bindParam(':user', $_SESSION['user']); 
 $sql->execute();
@@ -116,11 +116,12 @@ else
 
                                     <td>
 
-                                        <form method="get" action="modificaimpianto.php">
+                                        <form method="post" action="modificaimpianto.php">
                                             <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
                                             <button name="btnmodifica" type="submit" ><i class="fas fa-pencil-alt"> </i></button>
 
-                                            <a data-toggle="modal" data-target="#deleteimpianto<?= $row['Id']; ?>"><button type="button"><i class="fas fa-trash-alt"></i></button></a>
+                                            <a data-toggle="modal" data-target="#deleteimpianto<?= $row['Id']; ?>">
+                                                <button name="btnelimina" type="submit"><i class="fas fa-trash-alt"></i></button></a>
                                         </form>
                                     </td>
                                 </tr>
@@ -140,7 +141,7 @@ else
 
 
                                                 <form method="post" action="eliminaimpianto.php">
-                                                    <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
+                                                    <input type="hidden" name="txtidimpianto" value="<?php echo $row['Id']; ?>">
                                                 <button class="btn btn-primary" type="submit" data-dismiss="modal">Elimina</button>
                                                 </form>
 

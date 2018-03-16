@@ -23,6 +23,10 @@ require 'php/db.php'; ?>
     </head>
     
     <body> 
+        
+        
+        
+        
         <canvas id="myLineChart" width="600" height="600"></canvas> 
 
         <script> 
