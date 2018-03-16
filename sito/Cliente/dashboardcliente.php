@@ -24,7 +24,7 @@ require '../php/db.php'; ?>
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-             <a class="navbar-brand" style="color:white">Cliente</a>
+            <a class="navbar-brand" style="color:white">Cliente</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,13 +41,13 @@ require '../php/db.php'; ?>
 
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                         <a  class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard"></a>
-                            <a class="nav-link" href="aggiungiterzaparte.php">
-                                <i class="fas fa-plus"></i>
-                                <spam class="nav-link-text">Aggiungi Terza Parte</spam>
-                            </a>
+                        <a class="nav-link" href="aggiungiterzaparte.php">
+                            <i class="fas fa-plus"></i>
+                            <spam class="nav-link-text">Aggiungi Terza Parte</spam>
+                        </a>
 
 
-                            </li>
+                    </li>
 
 
                 </ul>
@@ -71,47 +71,83 @@ require '../php/db.php'; ?>
         <div class="content-wrapper">
             <div class="container-fluid">
                 <!-- Breadcrumbs-->
-                
-                    Dashboard
-                    <br><br>
-              
+
+                Dashboard
+                <br><br>
+
                 <!-- Area Chart Example-->
                 <div class="card mb-3">
                     <div class="card-header">
                         <select name="slnomeimpianto" class="form-control" id="sel1">
-                                <option value="nomeimpianto1">Impiantisctica andria</option>
-                                <option value="nomeimpianto2">Pianeta impianto</option>
-                            </select>
-                    <div class="card-body">
-                        <canvas id="myAreaChart" width="100%" height="30"></canvas>
-                    </div>
+                            <option value="nomeimpianto1">Impiantisctica andria</option>
+                            <option value="nomeimpianto2">Pianeta impianto</option>
+                        </select>
+                        <div class="card-body">
+                            
+                                <canvas id="myLineChart" width="600" height="600"></canvas> 
 
-                    <div class="row">
-                        <div class="col-lg-8">
+                                <script> 
+                                    // Definisco i dati da mostrare nel grafico 
+                                    var data = { 
+
+                                        labels: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto"], 
+                                        datasets: [ 
+                                            { 
+                                                label: "Temperature 2013", 
+                                                fillColor: "rgba(99,240,220,0.2)", 
+                                                strokeColor: "rgba(99,240,220,1)", 
+                                                pointColor: "rgba(99,240,220,1)", 
+                                                pointStrokeColor: "#fff", 
+                                                pointHighlightFill: "#fff", 
+                                                pointHighlightStroke: "rgba(220,220,220,1)", 
+                                                data: [8, 11, 18, 22, 24, 26, 34, 39] 
+                                            }, 
+                                            { 
+                                                label: "Temperature 2014", 
+                                                fillColor: "rgba(205,99,151,0.2)", 
+                                                strokeColor: "rgba(205,99,151,1)", 
+                                                pointColor: "rgba(205,99,151,1)", 
+                                                pointStrokeColor: "#fff", 
+                                                pointHighlightFill: "#fff", 
+                                                pointHighlightStroke: "rgba(151,187,205,1)", 
+                                                data: [16, 18, 22, 24, 26, 28, 32, 36] 
+                                            } 
+                                        ] 
+                                    }; 
+
+                                    // Ottengo il contesto 2D del Canvas in cui mostrare il grafico 
+                                    var ctx = document.getElementById("myLineChart").getContext("2d"); 
+
+                                    // Crea il grafico e visualizza i dati 
+                                    var myLineChart = new Chart(ctx).Line(data); 
+                                </script> 
+                            
+                            <div class="row">
+                                <div class="col-lg-8">
 
 
 
-                            <!-- Scroll to Top Button-->
-                            <a class="scroll-to-top rounded" href="#page-top">
-                                <i class="fa fa-angle-up"></i>
-                            </a>
-                            <!-- Bootstrap core JavaScript-->
-                            <script src="../vendor/jquery/jquery.min.js"></script>
-                            <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-                            <!-- Core plugin JavaScript-->
-                            <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-                            <!-- Page level plugin JavaScript-->
-                            <script src="../vendor/chart.js/Chart.min.js"></script>
-                            <!-- Custom scripts for all pages-->
-                            <script src="../js/sb-admin.min.js"></script>
-                            <!-- Custom scripts for this page-->
-                            <script src="../js/sb-admin-charts.min.js"></script>
+                                    <!-- Scroll to Top Button-->
+                                    <a class="scroll-to-top rounded" href="#page-top">
+                                        <i class="fa fa-angle-up"></i>
+                                    </a>
+                                    <!-- Bootstrap core JavaScript-->
+                                    <script src="../vendor/jquery/jquery.min.js"></script>
+                                    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                                    <!-- Core plugin JavaScript-->
+                                    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+                                    <!-- Page level plugin JavaScript-->
+                                    <script src="../vendor/chart.js/Chart.min.js"></script>
+                                    <!-- Custom scripts for all pages-->
+                                    <script src="../js/sb-admin.min.js"></script>
+                                    <!-- Custom scripts for this page-->
+                                    <script src="../js/sb-admin-charts.min.js"></script>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        </div>
-    </body>
+            
+            </body>
 
-</html>
+        </html>

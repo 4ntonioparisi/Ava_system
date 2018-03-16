@@ -6,7 +6,6 @@ $db='';
 $sql='';
 $db=getDb();
 $id=$_GET['txtid'];
-echo $id;
 $query="SELECT sensore.Id, sensore.Tipo, sensore.Marca, sensore.Stato from sensore where sensore.ImpiantoId=:Id ; ";
 $sql=$db->prepare($query);
 $sql->bindParam(':Id',$id);
@@ -156,7 +155,6 @@ else
 
 
                                                     <form method="post" action="eliminasensore.php">
-                                                        
                                                         <input type="hidden" name="txtimpianto" value="<?php echo $id; ?>">
                                                         <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
                                                         <button class="btn btn-primary" type='submit'>Elimina</button>

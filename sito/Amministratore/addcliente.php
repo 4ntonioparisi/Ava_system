@@ -138,14 +138,12 @@ $pwd = "";
                             echo $pwd;
                             $db=getDb();
 
-                            $query="INSERT INTO cliente (Nome, Città, User, Password) VALUES (':name', ':city', ':usr', ':pwd')";
+                            $query="INSERT INTO cliente (Nome, Città, User, Password) VALUES ('$name', '$city', '$usr', '$pwd')";
                             $sql = $db->prepare($query);
 
-                            $sql->bindParam(':name', $name);
-                            $sql->bindParam(':city', $city);
-                            $sql->bindParam(':usr', $usr);
-                            $sql->bindParam(':pwd', $pwd);
+                            
                             $sql->execute();
+                            echo $query;
 
                             // $sql="INSERT INTO cliente (Nome, Città, User, Password) VALUES (':name', ':city', ':usr', ':pwd')";
                             //    $stmt = $db->prepare($sql);

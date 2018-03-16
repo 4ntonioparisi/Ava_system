@@ -139,10 +139,9 @@ else
                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
 
 
-
                                                 <form method="post" action="eliminaimpianto.php">
                                                     <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
-                                                    <a class="btn btn-primary" type="submit">Elimina</a>
+                                                <button class="btn btn-primary" type="submit" data-dismiss="modal">Elimina</button>
                                                 </form>
 
 
@@ -154,11 +153,7 @@ else
                                 <?php
                                 }
                                 ?>
-
                                 <tbody>
-
-
-
                                 </tbody>
                             </table>
                         </div>

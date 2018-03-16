@@ -3,9 +3,8 @@ session_start();
 if (!empty($_SESSION['user'])){
 require '../php/db.php'; 
 
-$impianto=$_POST['txtimpianto'];
+$sensore=$_POST['txtimpianto'];
 $id=$_POST['txtid'];
-echo $id;
 $db=getDb();
 $query="DELETE FROM sensore where sensore.Id=:id";
 $sql=$db->prepare($query);
@@ -14,10 +13,8 @@ $sql->execute();
 }
 else
 {
-    header('location: modificaimpianto.php?txtid='.$impianto);
+    header('location: modificaimpianto.php?txtid='.$sensore);
 }
-    
-
 
 ?>
 

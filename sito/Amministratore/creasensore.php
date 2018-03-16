@@ -7,7 +7,9 @@ if (!empty($_SESSION['user'])){
 else
 {
     header('location: ../login.php');
-}
+}?>
+
+<?php
 if(!empty($_POST['btnaggiungi'])){
     $tiposensore=$_POST['tiposensore'];
     $marcasensore=$_POST['marcasensore'];
@@ -26,8 +28,7 @@ if(!empty($_POST['btnaggiungi'])){
     }else{
         echo 'errore';
     }
-}
-?>
+}?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -120,10 +121,8 @@ if(!empty($_POST['btnaggiungi'])){
                                     <label for="statosensore">Stato sensore:</label>
                                     <input type="text" class="form-control" name="statosensore">
                                 </div>
-
-
                                 <div class=" text-center">
-                                    <a href="creaimpianto.php"> <button type="button" class="btn btn-success"> Indietro</button></a>
+                                    <a href="dashboard.php"> <button type="button" class="btn btn-success"> Indietro</button></a>
                                     <button type="submit" class="btn btn-success" name='btnaggiungi' value="Aggiungi">Aggiungi</button>
                                     <button type="reset" class="btn btn-success" >Annulla</button>
                                 </div>       

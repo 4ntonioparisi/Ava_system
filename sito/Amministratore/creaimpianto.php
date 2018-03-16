@@ -1,12 +1,34 @@
 <?php
 session_start();
 if (!empty($_SESSION['user'])){
-    require '../php/db.php';
+    include '../php/db.php';
 }
 else
 {
     header('location: ../login.php');
 }  
+
+if(!empty($_POST['btnnuovosensore'])){
+    $nomeimpianto=$_POST['nomeimpianto'];
+    $nomecliente=$_POST['nomecliente'];
+    echo $nomeimpianto;
+    echo $nomecliente;
+    $db=getDb();
+    $query='INSERT INTO impianto (Nome, ClienteId) 
+                                    VALUES (":nomeimpianto", ":nomecliente")
+                                    SELECT Nome, ClienteId 
+                                    FROM Impianto inner join cliente on impianto.ClienteId=cliente.Id
+                                    WHERE impianto.ClienteId=cliente.Id';
+    $sql = $db->prepare($query);
+    $sql->bindParam(':nomeimpianto', $nomeimpianto);
+    $sql->bindParam(':nomecliente', $nomecliente);
+    $sql->execute();
+    if ($sql){
+        header('location: creasensore.php');
+    }else{
+        echo 'errore';
+    }                                
+}
 ?>
 
 <!DOCTYPE html>
@@ -97,32 +119,10 @@ else
                                 <input type="text" class="form-control" id="nomecliente">
                             </div> 
                             <div class=" text-center">
-                                 <button type="submit" class="btn btn-success" name="btnnuovsensore" >Nuovo sensore</button>
+                                <button type="submit" class="btn btn-success" name="btnnuovsensore" >Nuovo sensore</button>
                             </div>
                         </form>
-                        <?php
-                        if(!empty($_POST['btnnuovosensore'])){
-                            $nomeimpianto=$_POST['nomeimpianto'];
-                            $nomecliente=$_POST['nomecliente'];
-                            echo $nomeimpianto;
-                            echo $nomecliente;
-                            $db=getDb();
-                            $query='INSERT INTO impianto (Nome, ClienteId) 
-                                    VALUES (":nomeimpianto", ":nomecliente")
-                                    SELECT Nome, ClienteId 
-                                    FROM Impianto inner join cliente on impianto.ClienteId=cliente.Id
-                                    WHERE impianto.ClienteId=cliente.Id';
-                            $sql = $db->prepare($query);
-                            $sql->bindParam(':nomeimpianto', $nomeimpianto);
-                            $sql->bindParam(':nomecliente', $nomecliente);
-                            $sql->execute();
-                            if ($sql){
-                                header('location: dashboard.php');
-                            }else{
-                                echo 'errore';
-                            }                                
-                        }
-                        ?>
+
 
                     </div>
                 </div>
@@ -140,7 +140,7 @@ else
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fa fa-angle-up"></i>
             </a>
-           
+
             <!-- Bootstrap core JavaScript-->
             <script src="../vendor/jquery/jquery.min.js"></script>
             <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
