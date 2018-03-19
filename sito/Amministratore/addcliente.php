@@ -32,8 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $query="INSERT INTO cliente (Nome, Città, User, Password) VALUES ('$name', '$city', '$usr', '$pwd')";
     $sql = $db->prepare($query);
-
-
     $sql->execute();
     echo $query;
 
@@ -41,9 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="it">
-
-
-
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

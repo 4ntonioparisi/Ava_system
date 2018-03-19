@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['user'])){
     require '../php/db.php';   
     $db=getDb();
-    $query="SELECT sensore.Id as Sensore,  rilevazione.StringaAdattatore as Rilevazione 
+    $query="SELECT sensore.Id as Sensore, sensore.Tipo as TipoS, rilevazione.StringaAdattatore as Rilevazione 
         FROM ((sensore INNER JOIN rilevazione on sensore.Id=rilevazione.SensoreId) INNER JOIN 			impianto on sensore.ImpiantoId=impianto.Id) INNER JOIN cliente ON impianto.ClienteId=cliente.Id
         WHERE Cliente.User= :user";
        
@@ -93,6 +93,7 @@ else
                                 <thead>
                                     <tr>
                                         <th>Sensore</th>
+                                        <th>Tipo sensore</th>
                                         <th> Rilevazione</th>
                                     </tr>
                                 </thead>
@@ -105,6 +106,7 @@ else
                                 <tr>
 
                                     <td><?php echo $row['Sensore'];?></td>
+                                    <td><?php echo $row['TipoS'];?></td>
                                     <td><?php echo $row['Rilevazione'];  ?></td>
                                 </tr>
 
