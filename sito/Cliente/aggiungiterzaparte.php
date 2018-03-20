@@ -1,5 +1,42 @@
 <?php
-require '../php/db.php'; ?>
+session_start();
+if (!empty($_SESSION['user'])){
+    require '../php/db.php'; 
+}
+else
+{
+    header('location: ../login.php');
+} 
+?>
+<?php
+$nome = "";
+$cognome = "";
+$user = "";
+$password = "";
+$clienteid = "";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (!empty($_POST["nome"]))
+        $nome = $_POST["nome"];
+    if (!empty($_POST["cognome"])) 
+        $cognome = $_POST["cognome"];
+    if (!empty($_POST["user"])) 
+        $user = $_POST["user"];
+    if (!empty($_POST["password"])) 
+        $password = $_POST["password"];
+    if (!empty($_POST["clienteid"])) 
+        $clienteid = $_POST["clienteid"];
+
+    $db=getDb();
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+    $query="INSERT INTO persona (Nome, Cognome,User, Password, ClienteId) VALUES (' ".$nome." ', ' ".$cognome." ', ' ".$user." ', ' ".$password." ', ' ".$clienteid." ')";
+    $sql = $db->prepare($query);
+    print_r($db->errorInfo());
+    $sql->execute();
+   header('location:dashboardcliente.php');
+}
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="it">
@@ -22,36 +59,7 @@ require '../php/db.php'; ?>
     </head>
 
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-        <?php
-                        if (!empty($_POST['btnlogin'])){
-                            $user=$_POST['inputuser'];
-                            $password=$_POST['inputpassword'];
-                            $tipoaccount=$_POST['sltipoaccount'];
-                            $db=getDb();
-
-                            $query= 'select * from '.$tipoaccount.' where User=:user and Password=:password';
-                            $sql=$db->prepare($query);
-                            $sql->bindParam(':user',$user); 
-                            $sql->bindParam(':password',$password);
-                            $sql->execute();
-
-                            if ($sql->rowCount()===1){
-
-                                session_start();
-                                $_SESSION['user']=$user;
-
-
-                                if($tipoaccount==='amministratore') header ('location: Amministratore/dashboard.php');
-                                if($tipoaccount==='cliente') header('location: Cliente/dashboardcliente.php ');
-                                if($tipoaccount==='persona') header ('location: Terzaparte/dashboardterzaparte.php');
-
-
-
-                            }else {
-                                echo 'Attenzione il tuo account non esiste';
-                            }
-                        }
-                        ?>
+        
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <a class="navbar-brand" style="color:white">Cliente</a>
@@ -66,12 +74,7 @@ require '../php/db.php'; ?>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                         <br>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="informazionicliente.php">
-                            <i class="fas fa-info"></i>
-                            <span class="nav-link-text">Informazioni</span>
-                        </a>
-                    </li>
+                    
                 </ul>
                 <ul class="navbar-nav sidenav-toggler">
                     <li class="nav-item">
@@ -100,23 +103,37 @@ require '../php/db.php'; ?>
                         </table>
                     </div>
                     <div class="card-body">
-                        <div class="form-group">
+                     <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" >
+                        
                             <div class="form-group">
-                                <label for="tiposensore">Nome:</label>
-                                <input type="text" class="form-control" id="tiposensore">
+                                <label for="nome">Nome:</label>
+                                <input type="text" class="form-control" name="nome">
                             </div> 
                             <div class="form-group">
-                                <label for="marcasensore">Cognome:</label>
-                                <input type="text" class="form-control" id="marcasensore">
+                                <label for="cognome">Cognome:</label>
+                                <input type="text" class="form-control" name="cognome">
+                            </div>
+                            <div class="form-group">
+                                <label for="user">User:</label>
+                                <input type="text" class="form-control" name="user">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="text" class="form-control" name="password">
+                            </div>
+                            <div class="form-group">
+                                <label for="clienteid">ClienteId:</label>
+                                <input type="text" class="form-control" name="clienteid">
                             </div>
 
                             <div class=" text-center">
                                 <button type="button" class="btn btn-success" >Annulla</button>
 
-                                <a href="permessiterzaparte.php"><button type="button" class="btn btn-success">Avanti</button></a>
+                                <button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi</button> 
                             </div>
 
-                        </div>
+                       
+                        </form>
                     </div>
                 </div>
                 <!-- /.container-fluid-->
