@@ -1,5 +1,18 @@
 <?php
-require '../php/db.php'; ?>
+session_start();
+if (!empty($_SESSION['user'])){
+require '../php/db.php';   
+$db=getDb();
+$query="SELECT Nome,Citta, User, Password from cliente where User=:user";
+$sql=$db->prepare($query);
+$sql->bindParam(':user', $_SESSION['user']); 
+$sql->execute();
+}
+else
+{
+    header('location: ../login.php');
+}
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -71,21 +84,24 @@ require '../php/db.php'; ?>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
+                            <?php
+                            $row = $sql->fetch(PDO::FETCH_ASSOC);
+                            ?>
                             <div class="form-group">
-                                <label for="tiposensore">Nome:</label>
-                                <input type="text" class="form-control" id="tiposensore">
+                                <label for="nome">Nome:</label>
+                                <input type="text" class="form-control" name="nome" value="<?php echo $row['Nome']?>">
                             </div> 
                             <div class="form-group">
-                                <label for="marcasensore">Città:</label>
-                                <input type="text" class="form-control" id="marcasensore">
+                                <label for="citta">Città:</label>
+                                <input type="text" class="form-control" name="citta" value="<?php echo $row['Citta']?>">
                             </div>
                             <div class="form-group">
-                                <label for="marcasensore">User:</label>
-                                <input type="text" class="form-control" id="marcasensore">
+                                <label for="user">User:</label>
+                                <input type="text" class="form-control" name="user" value="<?php echo $row['User']?>">
                             </div> 
                             <div class="form-group">
-                                <label for="marcasensore">Password:</label>
-                                <input type="text" class="form-control" id="marcasensore">
+                                <label for="password">Password:</label>
+                                <input type="text" class="form-control" name="password" value="<?php echo $row['Password']?>">
                             </div>
                             <div class=" text-center">
 
