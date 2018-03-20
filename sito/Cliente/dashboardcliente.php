@@ -6,7 +6,7 @@ if (!empty($_SESSION['user'])){
     $query="SELECT sensore.Id as Sensore, sensore.Tipo as TipoS, rilevazione.StringaAdattatore as Rilevazione 
         FROM ((sensore INNER JOIN rilevazione on sensore.Id=rilevazione.SensoreId) INNER JOIN 			impianto on sensore.ImpiantoId=impianto.Id) INNER JOIN cliente ON impianto.ClienteId=cliente.Id
         WHERE Cliente.User= :user";
-       
+
     $sql=$db->prepare($query);
     $sql->bindParam(':user', $_SESSION['user']); 
     $sql->execute();
@@ -80,71 +80,75 @@ else
             <div class="container-fluid">Dashboard
                 <br><br>
 
-                <!-- Area Chart Example-->
+                <!-- dashboard-->
                 <div class="card mb-3">
-                    <div class="card-header">
-                        <select name="slnomeimpianto" class="form-control" id="sel1">
-                            <option name="nomeimpianto1">Impiantisctica andria</option>
-                            <option name="nomeimpianto2">Pianeta impianto</option>
-                        </select>
-                        <br><br>
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Sensore</th>
-                                        <th>Tipo sensore</th>
-                                        <th> Rilevazione</th>
-                                    </tr>
-                                </thead>
 
-                                <?php
-                                $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
-                                foreach($rows as $row)
-                                {
-                                ?>
+                    <div class="table-responsive">
+
+                        <div class="form-group">
+                            <label for="sensore">Sensore:</label>
+                            <input type="text" class="form-control" name="sensore" value="<?php echo $row['Sensore']?>">
+                        </div> 
+                        <div class="form-group">
+                            <label for="tipo">Tipo sensore:</label>
+                            <input type="text" class="form-control" name="tipo" value="<?php echo $row['TipoS']?>">
+                        </div>
+
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
                                 <tr>
-
-                                    <td><?php echo $row['Sensore'];?></td>
-                                    <td><?php echo $row['TipoS'];?></td>
-                                    <td><?php echo $row['Rilevazione'];  ?></td>
+                                    <th>Rilevazione</th>
                                 </tr>
+                            </thead>
+                            <?php
+    $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
+                                   foreach($rows as $row)
+                                   {
+                            ?>
+                            <tr>
+                                <td><?php echo $row['Rilevazione'];?></td>
 
-                                <?php
-                                }
-                                ?>
-
-                            </table>
-                        </div>
-
-
-                       
-                        <div class="row">
-                            <div class="col-lg-8">
+                            </tr>
 
 
-
-                                <!-- Scroll to Top Button-->
-                                <a class="scroll-to-top rounded" href="#page-top">
-                                    <i class="fa fa-angle-up"></i>
-                                </a>
-
-                                <!-- Bootstrap core JavaScript-->
-                                <script src="../vendor/jquery/jquery.min.js"></script>
-                                <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-                                <!-- Core plugin JavaScript-->
-                                <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-                                <!-- Page level plugin JavaScript-->
-                                <script src="../vendor/chart.js/Chart.min.js"></script>
-                                <!-- Custom scripts for all pages-->
-                                <script src="../js/sb-admin.min.js"></script>
-                                <!-- Custom scripts for this page-->
-                                <script src="../js/sb-admin-charts.min.js"></script>
-                            </div>
-                        </div>
-
+                            <?php
+                                   }
+                            ?>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                </body>
 
-            </html>
+
+
+
+                    <div class="row">
+                        <div class="col-lg-8">
+
+
+
+                            <!-- Scroll to Top Button-->
+                            <a class="scroll-to-top rounded" href="#page-top">
+                                <i class="fa fa-angle-up"></i>
+                            </a>
+
+                            <!-- Bootstrap core JavaScript-->
+                            <script src="../vendor/jquery/jquery.min.js"></script>
+                            <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                            <!-- Core plugin JavaScript-->
+                            <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+                            <!-- Page level plugin JavaScript-->
+                            <script src="../vendor/chart.js/Chart.min.js"></script>
+                            <!-- Custom scripts for all pages-->
+                            <script src="../js/sb-admin.min.js"></script>
+                            <!-- Custom scripts for this page-->
+                            <script src="../js/sb-admin-charts.min.js"></script>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
