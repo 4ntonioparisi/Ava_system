@@ -10,25 +10,31 @@ else
 }?>
 
 <?php
-if(!empty($_POST['btnaggiungi'])){
-    $tiposensore=$_POST['tiposensore'];
-    $marcasensore=$_POST['marcasensore'];
-    $statosensore=$_POST['statosensore'];
+$nomeimpianto = "";
+$codcliente = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (!empty($_POST["tiposensore"]))
+        $tiposensore = $_POST["tiposensore"];
+    if (!empty($_POST["marcasensore"])) 
+        $marcasensore = $_POST["marcasensore"];
+    if (!empty($_POST["statosensore"])) 
+        $statosensore = $_POST["statosensore"];
+    if (!empty($_POST["idimpianto"])) 
+        $idimpianto = $_POST["idimpianto"];
+
+
     $db=getDb();
-    $query='INSERT INTO sensore (Tipo, Marca, Stato, ImpiantoId) VALUES (":tiposensore", ":marcasensore",  ":statosensore", ":idimpianto")';
-    $sql=null;
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+    $query="INSERT INTO sensore (Tipo, Marca, Stato, ImpiantoId) VALUES(' ".$tiposensore." ', ' ".$marcasensore." ', ' ".$statosensore." ', ' ".$idimpianto." ')";
     $sql = $db->prepare($query);
-    $sql->bindParam(':tiposensore', $tiposensore);
-    $sql->bindParam(':marcasensore', $marcasensore);
-    $sql->bindParam(':statosensore', $statosensore);
-    $sql->bindParam(':idimpianto', $id);
+    print_r($db->errorInfo());
     $sql->execute();
-    if ($sql){
-        header('location: modificaimpianto.php');
-    }else{
-        echo 'errore';
-    }
+
+    header('location: modificaimpianto.php');
 }?>
+
+
 
 <!DOCTYPE html>
 <html lang="it">
@@ -53,7 +59,7 @@ if(!empty($_POST['btnaggiungi'])){
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <a class="navbar-brand" href="index.php">Amministatore</a>
+            <a class="navbar-brand" style="color:white">Amministratore</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -108,7 +114,8 @@ if(!empty($_POST['btnaggiungi'])){
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <form method="post" >
+
+                            <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" >
                                 <div class="form-group">
                                     <label for="tiposensore">Tipo sensore:</label>
                                     <input type="text" class="form-control" name="tiposensore">
@@ -127,6 +134,7 @@ if(!empty($_POST['btnaggiungi'])){
                                     <button type="reset" class="btn btn-success" >Annulla</button>
                                 </div>       
                             </form>
+
                         </div>
                     </div>
                 </div>

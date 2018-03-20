@@ -35,9 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     print_r($db->errorInfo());
     $sql->execute();
    
-      
-   
-
+    header('location: dashboard.php'); 
 }
 
 ?>
@@ -65,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <a class="navbar-brand" style="color:white">Amministratore</a>
+           <a class="navbar-brand" style="color:white">Amministratore</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

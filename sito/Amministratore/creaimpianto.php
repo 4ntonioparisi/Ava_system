@@ -7,29 +7,28 @@ else
 {
     header('location: ../login.php');
 }  
-
-if(!empty($_POST['btnnuovosensore'])){
-    $nomeimpianto=$_POST['nomeimpianto'];
-    $nomecliente=$_POST['nomecliente'];
-    echo $nomeimpianto;
-    echo $nomecliente;
-    $db=getDb();
-    $query='INSERT INTO impianto (Nome, ClienteId) 
-                                    VALUES (":nomeimpianto", ":nomecliente")
-                                    SELECT Nome, ClienteId 
-                                    FROM Impianto inner join cliente on impianto.ClienteId=cliente.Id
-                                    WHERE impianto.ClienteId=cliente.Id';
-    $sql = $db->prepare($query);
-    $sql->bindParam(':nomeimpianto', $nomeimpianto);
-    $sql->bindParam(':nomecliente', $nomecliente);
-    $sql->execute();
-    if ($sql){
-        header('location: creasensore.php');
-    }else{
-        echo 'errore';
-    }                                
-}
 ?>
+<?php
+    $nomeimpianto = "";
+$codcliente = "";
+
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (!empty($_POST["nomeimpianto"]))
+        $nomeimpianto = $_POST["nomeimpianto"];
+    if (!empty($_POST["codcliente"])) 
+        $codcliente = $_POST["codcliente"];
+ 
+
+    $db=getDb();
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+    $query="INSERT INTO impianto (Nome, ClienteId) VALUES (' ".$nomeimpianto." ', ' ".$codcliente." ')";
+    $sql = $db->prepare($query);
+    print_r($db->errorInfo());
+    $sql->execute();
+    
+    header('location: creasensore.php');
+}?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -55,7 +54,7 @@ if(!empty($_POST['btnnuovosensore'])){
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <a class="navbar-brand" href="index.php">Amministatore</a>
+            <a class="navbar-brand" style="color:white">Amministratore</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -109,16 +108,20 @@ if(!empty($_POST['btnnuovosensore'])){
                         </table>
                     </div>
                     <div class="card-body">
-                        <form method='post'>
+
+
+                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
                             <div class="form-group">
                                 <label for="nomeimpianto">Nome Impianto:</label>
-                                <input type="text" class="form-control" id="nomeimpianto">
+                                <input type="text" class="form-control" name="nomeimpianto" >
                             </div>
                             <div class="form-group">
-                                <label for="nomecliente">Nome Cliente:</label>
-                                <input type="text" class="form-control" id="nomecliente">
+                                <label for="codcliente">Codice Cliente:</label>
+                                <input type="text" class="form-control" name="codcliente">
                             </div> 
                             <div class=" text-center">
+                                <button type="reset" class="btn btn-success" >Annulla</button>
+
                                 <button type="submit" class="btn btn-success" name="btnnuovsensore" >Nuovo sensore</button>
                             </div>
                         </form>
