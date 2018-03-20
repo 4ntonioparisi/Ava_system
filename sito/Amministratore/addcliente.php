@@ -15,7 +15,10 @@ $usr = "";
 $pwd = "";
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+   
+
+
     if (!empty($_POST["name"]))
         $name = $_POST["name"];
     if (!empty($_POST["city"])) 
@@ -24,18 +27,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usr = $_POST["usr"];
     if (!empty($_POST["pwd"])) 
         $pwd = $_POST["pwd"];
-    echo $name;
-    echo $city;
-    echo $usr;
-    echo $pwd;
+
     $db=getDb();
-
-    $query="INSERT INTO cliente (Nome, Città, User, Password) VALUES ('$name', '$city', '$usr', '$pwd')";
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+    $query="INSERT INTO cliente (Nome, Citta, User, Password) VALUES (' ".$name." ', ' ".$city." ', ' ".$usr." ', ' ".$pwd." ')";
     $sql = $db->prepare($query);
+    print_r($db->errorInfo());
     $sql->execute();
-    echo $query;
+   
+      
+   
 
-}?>
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -60,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <a class="navbar-brand" href="index.php">Amministatore</a>
+            <a class="navbar-brand" style="color:white">Amministratore</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -115,29 +120,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="card-body">
 
-                        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" >
+                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" >
                             <div class="form-group">
                                 <label for="name">Nome cliente:</label>
-                                <input type="text" class="form-control" name="name" value="<?php echo $name;?>">
+                                <input type="text" class="form-control" name="name" >
                             </div>
 
                             <div class="form-group">
                                 <label for="city">Città</label>
-                                <input type="text" class="form-control" name="city" value="<?php echo $city;?>">
+                                <input type="text" class="form-control" name="city" >
                             </div> 
                             <div class="form-group">
                                 <label for="usr">User:</label>
-                                <input type="text" class="form-control" name="usr" value="<?php echo $usr;?>">
+                                <input type="text" class="form-control" name="usr" >
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Password:</label>
-                                <input type="text" class="form-control" name="pwd" value="<?php echo $pwd;?>">
+                                <input type="text" class="form-control" name="pwd" >
                             </div>
                             <div class=" text-center">
                                 <button type="reset" class="btn btn-success" >Annulla</button>
                                 <!--<a data-toggle="modal" data-target="#exampleModal"><button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi </button></a>  -->
 
-                               <a href="dashboard.php"> <button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi</button> </a> 
+                                <button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi</button> 
 
                             </div>
 
