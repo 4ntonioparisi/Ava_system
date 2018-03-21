@@ -108,8 +108,7 @@ else
                                 <a href="dashboardcliente.php"><button type="button" class="btn btn-success" >
                                     Indietro</button></a>
 
-                                <a href="registrazionecliente.php"><button type="button" class="btn btn-success" >
-                                    Modifica</button></a>
+                                
                             </div>
 
                         </div>
