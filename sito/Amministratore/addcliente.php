@@ -121,16 +121,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" >
                             <div class="form-group">
                                 <label for="name">Nome cliente:</label>
-                                <input type="text" class="form-control" name="name" >
+                                <input type="text" class="form-control" name="name" placeholder="Inserisci Nome">
                             </div>
 
                             <div class="form-group">
                                 <label for="city">Città</label>
-                                <input type="text" class="form-control" name="city" >
+                                <input type="text" class="form-control" name="city" placeholder="Inserisci Città">
                             </div> 
                             <div class="form-group">
                                 <label for="usr">User:</label>
-                                <input type="text" class="form-control" name="usr" >
+                                <input type="text" class="form-control" name="usr" placeholder="Inserisci User">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Password:</label>

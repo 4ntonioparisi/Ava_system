@@ -107,15 +107,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
-                                <input type="text" class="form-control" name="nome">
+                                <input type="text" class="form-control" name="nome"
+                                       placeholder="Inserisci Nome">
                             </div> 
                             <div class="form-group">
                                 <label for="cognome">Cognome:</label>
-                                <input type="text" class="form-control" name="cognome">
+                                <input type="text" class="form-control" name="cognome"
+                                       placeholder="Inserisci Cognome">
                             </div>
                             <div class="form-group">
                                 <label for="user">User:</label>
-                                <input type="text" class="form-control" name="user">
+                                <input type="text" class="form-control" name="user"
+                                       placeholder="Inserisci User">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Password:</label>
