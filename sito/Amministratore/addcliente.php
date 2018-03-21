@@ -16,7 +16,7 @@ $pwd = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-   
+
 
 
     if (!empty($_POST["name"]))
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = $db->prepare($query);
     print_r($db->errorInfo());
     $sql->execute();
-   
+
     header('location: dashboard.php'); 
 }
 
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-           <a class="navbar-brand" style="color:white">Amministratore</a>
+            <a class="navbar-brand" style="color:white">Amministratore</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -134,8 +134,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Password:</label>
-                                <input type="text" class="form-control" name="pwd" >
+                                <input class="form-control" name="pwd" id="exampleInputPassword1" type="password" 
+                                       placeholder="Inserisci Password">
                             </div>
+
                             <div class=" text-center">
                                 <button type="reset" class="btn btn-success" >Annulla</button>
                                 <!--<a data-toggle="modal" data-target="#exampleModal"><button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi </button></a>  -->

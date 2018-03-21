@@ -118,8 +118,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <input type="text" class="form-control" name="user">
                             </div>
                             <div class="form-group">
-                                <label for="password">Password:</label>
-                                <input type="text" class="form-control" name="password">
+                                <label for="pwd">Password:</label>
+                                <input class="form-control" name="pwd" id="exampleInputPassword1" type="password" 
+                                       placeholder="Inserisci Password">
                             </div>
                             <div class="form-group">
                                 <label for="clienteid">ClienteId:</label>

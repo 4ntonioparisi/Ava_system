@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     print_r($db->errorInfo());
     $sql->execute();
 
-    header('location: modificaimpianto.php');
+    header('location: dashboard.php');
 }
 ?>
 

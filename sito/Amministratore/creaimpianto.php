@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $db=getDb();
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-    $query="INSERT INTO impianto (Nome, ClienteId) VALUES (' ".$nomeimpianto." ', ' ".$codcliente." ')";
+    $query="INSERT INTO impianto (Nome, ClienteId) VALUES (' ".$nomeimpianto." ', ' .$codcliente. ')";
     $sql = $db->prepare($query);
     print_r($db->errorInfo());
     $sql->execute();
@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <div class=" text-center">
                                 <button type="reset" class="btn btn-success" >Annulla</button>
 
-                                <button type="submit" class="btn btn-success" name="btnnuovsensore" >Nuovo sensore</button>
+                                <button type="submit" class="btn btn-success" name="btnnuovsensore" >Avanti</button>
                             </div>
                         </form>
 
