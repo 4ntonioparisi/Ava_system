@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             </div>
                             <div class="form-group">
                                 <label for="clienteid">ClienteId:</label>
-                                <input type="text" class="form-control" name="clienteid">
+                                <input type="text" class="form-control" name="clienteid" placeholder="Inserisci Id del cliente">
                             </div>
 
                             <div class=" text-center">

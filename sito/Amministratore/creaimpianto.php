@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     print_r($db->errorInfo());
     $sql->execute();
     
-    header('location: creasensore.php');
+    header('location: dashboard.php');
 }?>
 
 <!DOCTYPE html>
