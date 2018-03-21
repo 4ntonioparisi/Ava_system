@@ -116,7 +116,7 @@ else
 
                                     <td>
 
-                                        <form method="post" action="modificaimpianto.php">
+                                        <form method="POST" action="modificaimpianto.php">
                                             <input type="hidden" name="txtid" value="<?php echo $row['Id']; ?>">
                                             <button name="btnmodifica" type="submit" ><i class="fas fa-pencil-alt"> </i></button>
 

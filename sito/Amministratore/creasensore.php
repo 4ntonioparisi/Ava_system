@@ -10,8 +10,10 @@ else
 }?>
 
 <?php
-$nomeimpianto = "";
-$codcliente = "";
+$tiposensore= "";
+$marcasensore = "";
+$statosensore = "";
+$impiantoid = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!empty($_POST["tiposensore"]))
@@ -20,19 +22,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $marcasensore = $_POST["marcasensore"];
     if (!empty($_POST["statosensore"])) 
         $statosensore = $_POST["statosensore"];
-    if (!empty($_POST["idimpianto"])) 
-        $idimpianto = $_POST["idimpianto"];
+     if (!empty($_POST["impiantoid"])) 
+        $impiantoid = $_POST["impiantoid"];
+   
 
 
     $db=getDb();
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-    $query="INSERT INTO sensore (Tipo, Marca, Stato, ImpiantoId) VALUES(' ".$tiposensore." ', ' ".$marcasensore." ', ' ".$statosensore." ', ' ".$idimpianto." ')";
+    $query="INSERT INTO sensore (Tipo, Marca, Stato, ImpiantoId) VALUES(' ".$tiposensore." ', ' ".$marcasensore." ', '$statosensore', ' .$impiantoid. ')";
     $sql = $db->prepare($query);
     print_r($db->errorInfo());
     $sql->execute();
 
     header('location: modificaimpianto.php');
-}?>
+}
+?>
 
 
 
@@ -71,6 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <i class="fas fa-tachometer-alt"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
+                    </li>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                         <a class="nav-link" href="creaimpianto.php">
                             <i class="fas fa-industry"></i>
@@ -128,6 +133,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <label for="statosensore">Stato sensore:</label>
                                     <input type="text" class="form-control" name="statosensore">
                                 </div>
+                                <div class="form-group">
+                                    <label for="impiantoid">Impianto Id:</label>
+                                    <input type="text" class="form-control" name="impiantoid">
+                                </div>
                                 <div class=" text-center">
                                     <a href="dashboard.php"> <button type="button" class="btn btn-success"> Indietro</button></a>
                                     <button type="submit" class="btn btn-success" name='btnaggiungi' value="Aggiungi">Aggiungi</button>
@@ -166,6 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <!-- Custom scripts for this page-->
                 <script src="../js/sb-admin-datatables.min.js"></script>
             </div>
+        </div>
             </body>
 
         </html>
