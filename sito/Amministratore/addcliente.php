@@ -140,10 +140,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                             <div class=" text-center">
                                 <button type="reset" class="btn btn-success" >Annulla</button>
-                                <!--<a data-toggle="modal" data-target="#exampleModal"><button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi </button></a>  -->
+                                
 
-                                <button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi</button> 
-
+                                <a data-toggle="modal" data-target="#exampleModal"><button type="submit" class="btn btn-success" name="btnaggiungi">Aggiungi</button></a>
+                                <!-- Add Modal-->
+                                <div class="modal" fade id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Aggiungi cliente.</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">x</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Il cliente è stato aggiunto.</div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
+                                                <form method="post" action="dashboard.php">
+                                                    <button class="btn btn-primary" type='submit'>Ok</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
                             </div>
 
                         </form>
@@ -151,26 +170,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-                        <!-- Add Modal-->
-                        <!-- <div class="modal" fade id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Aggiungi cliente.</h5>
-<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">x</span>
-</button>
-</div>
-<div class="modal-body">Il cliente è stato aggiunto.</div>
-<div class="modal-footer">
-<button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
-<form method="post" action="dashboard.php">
-<button class="btn btn-primary" type='submit'>ok</button>
-</form>
-</div>
-</div>
-</div>
-</div> -->
+
 
                     </div>
                 </div>

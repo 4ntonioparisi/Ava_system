@@ -59,23 +59,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
+                <br>
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                         <a class="nav-link" href="dashboard.php">
                             <i class="fas fa-tachometer-alt"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="creaimpianto.php">
-                            <i class="fas fa-industry"></i>
-                            <span class="nav-link-text">Crea impianto</span>
-                        </a>
                     </li>
-                    <br>
+                     <br>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                         <a class="nav-link" href="addcliente.php">
                             <i class="fas fa-user-plus"></i>
                             <span class="nav-link-text">Aggiungi cliente</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                        <a class="nav-link" href="creaimpianto.php">
+                            <i class="fas fa-industry"></i>
+                            <span class="nav-link-text">Crea impianto</span>
                         </a>
                     </li>
                 </ul>
@@ -88,11 +90,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </ul>
                 <ul class="navbar-nav ml-auto">
 
-
                     <li class="nav-item">
-                        <a class="nav-link" href="../login.php" >
-                            <i class="fa fa-fw fa-sign-out" ></i>Logout</a>
-
+                        <a class="nav-link" href="../login.php">
+                            <i class="fas fa-sign-out-alt"></i>Logout</a>
                     </li>
                 </ul>
             </div>
@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <div class=" text-center">
                                 <button type="reset" class="btn btn-success" >Annulla</button>
 
-                                <button type="submit" class="btn btn-success" name="btnnuovsensore" >Avanti</button>
+                                <button type="submit" class="btn btn-success" name="btnnuovsensore" >Crea</button>
                             </div>
                         </form>
 

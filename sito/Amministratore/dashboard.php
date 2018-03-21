@@ -50,17 +50,18 @@ else
                             <i class="fas fa-tachometer-alt"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="creaimpianto.php">
-                            <i class="fas fa-industry"></i>
-                            <span class="nav-link-text">Crea impianto</span>
-                        </a>
                     </li>
-                    <br>
+                     <br>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                         <a class="nav-link" href="addcliente.php">
                             <i class="fas fa-user-plus"></i>
                             <span class="nav-link-text">Aggiungi cliente</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                        <a class="nav-link" href="creaimpianto.php">
+                            <i class="fas fa-industry"></i>
+                            <span class="nav-link-text">Crea impianto</span>
                         </a>
                     </li>
                 </ul>

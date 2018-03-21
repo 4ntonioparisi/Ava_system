@@ -76,17 +76,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="creaimpianto.php">
-                            <i class="fas fa-industry"></i>
-                            <span class="nav-link-text">Crea impianto</span>
-                        </a>
-                    </li>
-                    <br>
+                     <br>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                         <a class="nav-link" href="addcliente.php">
                             <i class="fas fa-user-plus"></i>
                             <span class="nav-link-text">Aggiungi cliente</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                        <a class="nav-link" href="creaimpianto.php">
+                            <i class="fas fa-industry"></i>
+                            <span class="nav-link-text">Crea impianto</span>
                         </a>
                     </li>
                 </ul>
@@ -98,10 +98,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
+
                     <li class="nav-item">
-                        <a class="nav-link" href="../login.php" >
-                            <i class="fa fa-fw fa-sign-out" ></i>Logout
-                        </a>
+                        <a class="nav-link" href="../login.php">
+                            <i class="fas fa-sign-out-alt"></i>Logout</a>
                     </li>
                 </ul>
             </div>
