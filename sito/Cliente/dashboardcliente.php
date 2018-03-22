@@ -3,8 +3,8 @@ session_start();
 if (!empty($_SESSION['user'])){
     require '../php/db.php';   
     $db=getDb();
-    $query="SELECT sensore.Id as Sensore, sensore.Tipo as TipoS, rilevazione.StringaAdattatore as Rilevazione 
-        FROM ((sensore INNER JOIN rilevazione on sensore.Id=rilevazione.SensoreId) INNER JOIN 			impianto on sensore.ImpiantoId=impianto.Id) INNER JOIN cliente ON impianto.ClienteId=cliente.Id
+    $query="SELECT sensore.Id as Sensore, sensore.Tipo as TipoS, rilevazione.Ora, rilevazione.Caratteri, rilevazione.CifreDecimali 
+          FROM ((sensore INNER JOIN rilevazione on sensore.Id=rilevazione.SensoreId) INNER JOIN impianto on sensore.ImpiantoId=impianto.Id) INNER JOIN cliente ON impianto.ClienteId=cliente.Id
         WHERE Cliente.User= :user";
 
     $sql=$db->prepare($query);
@@ -77,44 +77,44 @@ else
 
 
         <div class="content-wrapper">
-            <div class="container-fluid">Dashboard
+            <div class="container-fluid"><b>Dashboard rilevazioni</b>
                 <br><br>
 
                 <!-- dashboard-->
-                <div class="card mb-3">
-
+                <div class="card mb-3">                    
                     <div class="table-responsive">
-
-                        <div class="form-group">
-                            <label for="sensore">Sensore:</label>
-                            <input type="text" class="form-control" name="sensore" value="<?php echo $row['Sensore']?>">
-                        </div> 
-                        <div class="form-group">
-                            <label for="tipo">Tipo sensore:</label>
-                            <input type="text" class="form-control" name="tipo" value="<?php echo $row['TipoS']?>">
-                        </div>
-
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Rilevazione</th>
+                                    <br>
+                                    <th>Sensore</th>
+                                    <th>Tipo sensore</th>
+                                    <th>Ora</th>
+                                    <th> Caratteri</th>
+                                    <th>Cifre decimali</th>
                                 </tr>
                             </thead>
-                            <?php
-    $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
-                                   foreach($rows as $row)
-                                   {
+                          
+                            <tbody>
+                                  <?php
+                            $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
+                            foreach($rows as $row)
+                            {
                             ?>
+                                                       
                             <tr>
-                                <td><?php echo $row['Rilevazione'];?></td>
+                                 <td><?php echo $row['Sensore'];?></td>
+                                 <td><?php echo $row['TipoS'];?></td>
+                                 <td><?php echo $row['Ora'];?></td>
+                                 <td><?php echo $row['Caratteri'];?></td>
+                                 <td><?php echo $row['CifreDecimali'];?></td>
+    
 
                             </tr>
-
-
                             <?php
-                                   }
+                            }
                             ?>
-                            <tbody>
+                                
                             </tbody>
                         </table>
                     </div>

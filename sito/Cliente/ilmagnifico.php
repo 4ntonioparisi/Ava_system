@@ -83,10 +83,14 @@ else
                 <!-- Area Chart Example-->
                 <div class="card mb-3">
                     <div class="card-header">
+                        for
+                        
                         <select name="slnomeimpianto" class="form-control" id="sel1">
                             <option name="nomeimpianto1">Impiantisctica andria</option>
                             <option name="nomeimpianto2">Pianeta impianto</option>
                         </select>
+                        
+                        
                         <br><br>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
