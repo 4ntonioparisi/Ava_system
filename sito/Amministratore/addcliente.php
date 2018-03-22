@@ -9,24 +9,24 @@ else
 } 
 ?>
 <?php
-$name = "";
-$city = "";
-$usr = "";
-$pwd = "";
+$name = '';
+$city = ''
+$usr = '';
+$pwd = '';
 
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-    if (!empty($_POST["name"]))
-        $name = $_POST["name"];
-    if (!empty($_POST["city"])) 
-        $city = $_POST["city"];
-    if (!empty($_POST["usr"])) 
-        $usr = $_POST["usr"];
-    if (!empty($_POST["pwd"])) 
-        $pwd = $_POST["pwd"];
+    if (!empty($_POST['name']))
+        $name = $_POST['name'];
+    if (!empty($_POST['city'])) 
+        $city = $_POST['city'];
+    if (!empty($_POST['usr'])) 
+        $usr = $_POST['usr'];
+    if (!empty($_POST['pwd'])) 
+        $pwd = $_POST['pwd'];
 
     $db=getDb();
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);

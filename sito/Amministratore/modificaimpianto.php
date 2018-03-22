@@ -6,7 +6,7 @@ if (!empty($_SESSION['user'])){
     $sql='';
     $db=getDb();
     $id=$_POST['txtid'];
-    $query="SELECT sensore.Id, sensore.Tipo, sensore.Marca, sensore.Stato from sensore where sensore.ImpiantoId=:Id ; ";
+    $query='SELECT sensore.Id, sensore.Tipo, sensore.Marca, sensore.Stato from sensore where sensore.ImpiantoId=:Id';
     $sql=$db->prepare($query);
     $sql->bindParam(':Id',$id);
     $sql->execute();

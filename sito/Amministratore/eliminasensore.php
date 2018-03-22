@@ -8,7 +8,7 @@ if (!empty($_SESSION['user'])){
 
     $db=getDb();
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-    $query="DELETE FROM sensore where sensore.Id=:id";
+    $query='DELETE FROM sensore where sensore.Id=:id';
     $sql=$db->prepare($query);
     $sql->bindParam(':id', $id);
     print_r($db->errorInfo());

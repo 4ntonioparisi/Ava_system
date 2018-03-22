@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['user'])){
 require '../php/db.php';   
 $db=getDb();
-$query="SELECT impianto.Id, impianto.Nome, cliente.Nome as NomeC from (((amministratore inner join amministratore_impianto on amministratore.Id=amministratore_impianto.AmministratoreId) inner join impianto on amministratore_impianto.ImpiantoId= impianto.Id) INNER join cliente on impianto.ClienteId=cliente.Id) where amministratore.User=:user";
+$query='SELECT impianto.Id, impianto.Nome, cliente.Nome as NomeC from (((amministratore inner join amministratore_impianto on amministratore.Id=amministratore_impianto.AmministratoreId) inner join impianto on amministratore_impianto.ImpiantoId= impianto.Id) INNER join cliente on impianto.ClienteId=cliente.Id) where amministratore.User=:user';
 $sql=$db->prepare($query);
 $sql->bindParam(':user', $_SESSION['user']); 
 $sql->execute();
