@@ -9,22 +9,18 @@ else
 } 
 ?>
 <?php
-$nome = "";
-$cognome = "";
-$user = "";
-$password = "";
-$clienteid = "";
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (!empty($_POST["nome"]))
-        $nome = $_POST["nome"];
-    if (!empty($_POST["cognome"])) 
-        $cognome = $_POST["cognome"];
-    if (!empty($_POST["user"])) 
-        $user = $_POST["user"];
-    if (!empty($_POST["password"])) 
-        $password = $_POST["password"];
-    if (!empty($_POST["clienteid"])) 
-        $clienteid = $_POST["clienteid"];
+    if (!empty($_POST['nome']))
+        $nome = $_POST['nome'];
+    if (!empty($_POST['cognome'])) 
+        $cognome = $_POST['cognome'];
+    if (!empty($_POST['user'])) 
+        $user = $_POST['user'];
+    if (!empty($_POST['password'])) 
+        $password = $_POST['password'];
+    if (!empty($_POST['clienteid'])) 
+        $clienteid = $_POST['clienteid'];
 
     $db=getDb();
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
