@@ -9,81 +9,16 @@
 	(factory((global.bootstrap = {}),global.jQuery));
 }(this, (function (exports,$) { 'use strict';
 
-$ = $ && $.hasOwnProperty('default') ? $['default'] : $;
 
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-}
-
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): util.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-
-var Util = function ($$$1) {
-  /**
-   * ------------------------------------------------------------------------
-   * Private TransitionEnd Helpers
-   * ------------------------------------------------------------------------
-   */
-  var transition = false;
-  var MAX_UID = 1000000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
-
-  function toType(obj) {
-    return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
-  }
-
-  function getSpecialTransitionEndEvent() {
-    return {
-      bindType: transition.end,
-      delegateType: transition.end,
-      handle: function handle(event) {
+      
         if ($$$1(event.target).is(this)) {
           return event.handleObj.handler.apply(this, arguments); // eslint-disable-line prefer-rest-params
         }
 
         return undefined; // eslint-disable-line no-undefined
       }
-    };
-  }
+    
+  
 
   function transitionEndTest() {
     if (typeof window !== 'undefined' && window.QUnit) {
