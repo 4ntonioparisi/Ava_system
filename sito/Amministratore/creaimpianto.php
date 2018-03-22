@@ -9,16 +9,16 @@ else
 }  
 ?>
 <?php
-    $nomeimpianto = "";
-$codcliente = "";
+$nomeimpianto = '';
+$codcliente = '';
 
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (!empty($_POST["nomeimpianto"]))
-        $nomeimpianto = $_POST["nomeimpianto"];
-    if (!empty($_POST["codcliente"])) 
-        $codcliente = $_POST["codcliente"];
- 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!empty($_POST['nomeimpianto']))
+        $nomeimpianto = $_POST['nomeimpianto'];
+    if (!empty($_POST['codcliente'])) 
+        $codcliente = $_POST['codcliente'];
+
 
     $db=getDb();
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = $db->prepare($query);
     print_r($db->errorInfo());
     $sql->execute();
-    
+
     header('location: dashboard.php');
 }?>
 
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
-                     <br>
+                    <br>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                         <a class="nav-link" href="addcliente.php">
                             <i class="fas fa-user-plus"></i>

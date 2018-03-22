@@ -10,7 +10,7 @@ else
 ?>
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['nome']))
         $nome = $_POST['nome'];
     if (!empty($_POST['cognome'])) 

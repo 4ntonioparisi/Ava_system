@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['user'])){
 require '../php/db.php';   
 $db=getDb();
-$query="SELECT Nome,Citta, User, Password from cliente where User=:user";
+$query='SELECT Nome,Citta, User, Password from cliente where User=:user';
 $sql=$db->prepare($query);
 $sql->bindParam(':user', $_SESSION['user']); 
 $sql->execute();

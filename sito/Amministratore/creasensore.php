@@ -10,20 +10,20 @@ else
 }?>
 
 <?php
-$tiposensore= "";
-$marcasensore = "";
-$statosensore = "";
-$impiantoid = "";
+$tiposensore= '';
+$marcasensore = '';
+$statosensore = '';
+$impiantoid = '';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (!empty($_POST["tiposensore"]))
-        $tiposensore = $_POST["tiposensore"];
-    if (!empty($_POST["marcasensore"])) 
-        $marcasensore = $_POST["marcasensore"];
-    if (!empty($_POST["statosensore"])) 
-        $statosensore = $_POST["statosensore"];
-     if (!empty($_POST["impiantoid"])) 
-        $impiantoid = $_POST["impiantoid"];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!empty($_POST['tiposensore']))
+        $tiposensore = $_POST['tiposensore'];
+    if (!empty($_POST['marcasensore'])) 
+        $marcasensore = $_POST['marcasensore'];
+    if (!empty($_POST['statosensore'])) 
+        $statosensore = $_POST['statosensore'];
+     if (!empty($_POST['impiantoid'])) 
+        $impiantoid = $_POST['impiantoid'];
    
 
 

@@ -4,13 +4,13 @@ function getDb(){
   blocco dei parametri di connessione
 */
 // nome di host
-$host = "localhost";
+$host = 'localhost';
 // nome del database
-$db = "system_ava";
+$db = 'system_ava';
 // username dell'utente in connessione
-$user = "root";
+$user = 'root';
 // password dell'utente
-$password = "";
+$password = '';
 
 /*
   blocco try/catch di gestione delle eccezioni

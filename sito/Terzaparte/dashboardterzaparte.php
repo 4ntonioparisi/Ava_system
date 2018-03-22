@@ -3,7 +3,7 @@ session_start();
 if (!empty($_SESSION['user'])){
     require '../php/db.php';   
     $db=getDb();
-    $query="SELECT sensore.Id as Sensore, sensore.Tipo as TipoS, rilevazione.Ora, rilevazione.Caratteri, rilevazione.CifreDecimali FROM (((sensore INNER JOIN rilevazione on sensore.Id=rilevazione.SensoreId) INNER JOIN impianto on sensore.ImpiantoId=impianto.Id) INNER JOIN cliente ON impianto.ClienteId=cliente.Id) INNER JOIN persona on cliente.Id=persona.ClienteId WHERE persona.User= :user ";
+    $query='SELECT sensore.Id as Sensore, sensore.Tipo as TipoS, rilevazione.Ora, rilevazione.Caratteri, rilevazione.CifreDecimali FROM (((sensore INNER JOIN rilevazione on sensore.Id=rilevazione.SensoreId) INNER JOIN impianto on sensore.ImpiantoId=impianto.Id) INNER JOIN cliente ON impianto.ClienteId=cliente.Id) INNER JOIN persona on cliente.Id=persona.ClienteId WHERE persona.User= :user ';
 
     $sql=$db->prepare($query);
     $sql->bindParam(':user', $_SESSION['user']); 
