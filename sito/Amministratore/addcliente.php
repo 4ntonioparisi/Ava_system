@@ -10,7 +10,7 @@ else
 ?>
 <?php
 $name = '';
-$city = ''
+$city = '';
 $usr = '';
 $pwd = '';
 
