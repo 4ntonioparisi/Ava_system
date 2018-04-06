@@ -124,11 +124,11 @@ else
                                             <?php 
                                         if($row['Stato']==='0'){
                                             ?> 
-                                            <i class="fal fa-circle" style="color:Red"></i>
+                                            <i class="fas fa-circle" style="color:Red"></i>
                                             <?php  }
                                         else
                                         { ?>
-                                            <i class="fal fa-circle" style="color:Green"></i>
+                                            <i class="fas fa-circle" style="color:Green"></i>
                                             <?php } ?>
 
                                         </td>  
