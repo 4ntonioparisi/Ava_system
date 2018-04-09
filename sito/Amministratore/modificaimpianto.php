@@ -79,7 +79,7 @@ else
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="../login.php" >
-                            <i class="fa fa-fw fa-sign-out" ></i>Logout
+                            <i class="fas fa-sign-out-alt" ></i>Logout
                         </a>
                     </li>
                 </ul>

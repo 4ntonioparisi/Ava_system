@@ -74,12 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <span class="nav-link-text">Aggiungi cliente</span>
                         </a>
                     </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="creaimpianto.php">
-                            <i class="fas fa-industry"></i>
-                            <span class="nav-link-text">Crea impianto</span>
-                        </a>
-                    </li>
+                  
                 </ul>
                 <ul class="navbar-nav sidenav-toggler">
                     <li class="nav-item">

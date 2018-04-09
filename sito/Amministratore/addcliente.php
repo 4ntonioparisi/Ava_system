@@ -82,12 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </a>
                     </li>
                     <br>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="addcliente.php">
-                            <i class="fas fa-user-plus"></i>
-                            <span class="nav-link-text">Aggiungi cliente</span>
-                        </a>
-                    </li>
+                    
                 </ul>
                 <ul class="navbar-nav sidenav-toggler">
                     <li class="nav-item">
